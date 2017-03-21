@@ -1,10 +1,19 @@
 package sri.universal
 
 import sri.core.ReactClass
-import sri.universal.apis.{Animated, AppRegistry, AsyncStorageJS, DeviceEventEmitter, Keyboard, PanResponder, PixelRatio, ReactPlatForm, StyleSheet}
+import sri.universal.apis.{
+  Animated,
+  AppRegistry,
+  AsyncStorage,
+  DeviceEventEmitter,
+  Keyboard,
+  PanResponder,
+  PixelRatio,
+  ReactPlatForm,
+  StyleSheet
+}
 
 import scala.scalajs.js
-
 
 @js.native
 trait ReactUniversal extends js.Object {
@@ -30,14 +39,12 @@ trait ReactUniversal extends js.Object {
   val Slider: ReactClass = js.native
   val ActivityIndicator: ReactClass = js.native
 
-
   val NavigationExperimental: js.Dynamic = js.native
-
 
   // apis
   //
   val StyleSheet: StyleSheet = js.native
-  val AsyncStorage: AsyncStorageJS = js.native
+  val AsyncStorage: AsyncStorage = js.native
   val AppRegistry: AppRegistry = js.native
   val Keyboard: Keyboard = js.native
   //  val CameraRoll: CameraRoll = js.native
@@ -62,4 +69,3 @@ trait ReactUniversal extends js.Object {
 //@js.native
 //@JSImport("react-native", JSImport.Namespace)
 //object ReactUniversal extends ReactUniversal
-

@@ -1,7 +1,8 @@
 package sri.universal.apis
 
-import sri.core.ReactClass
+import sri.core.{JSComponent, ReactClass}
 import sri.universal.XYValueLiteral
+import sri.universal.components._
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.{JSImport, ScalaJSDefined}
@@ -9,15 +10,15 @@ import scala.scalajs.js.{undefined, |, UndefOr => U}
 
 @js.native
 @JSImport("react-native", "Animated.View")
-object AnimatedViewClass extends ReactClass
+object AnimatedViewComponent extends JSComponent[ViewProps]
 
 @js.native
 @JSImport("react-native", "Animated.Text")
-object AnimatedTextClass extends ReactClass
+object AnimatedTextComponent extends JSComponent[TextProps]
 
 @js.native
 @JSImport("react-native", "Animated.Image")
-object AnimatedImageClass extends ReactClass
+object AnimatedImageComponent extends JSComponent[ImageProps]
 
 @js.native
 trait Animated extends js.Object {
@@ -85,16 +86,16 @@ trait AnimatedEventConfig extends js.Object {
 }
 
 @js.native
-class AnimatedDivision extends js.Object
+trait AnimatedDivision extends js.Object
 
 @js.native
-class AnimatedMultiplication extends js.Object
+trait AnimatedMultiplication extends js.Object
 
 @js.native
-class AnimatedModulo extends js.Object
+trait AnimatedModulo extends js.Object
 
 @js.native
-class AnimatedDiffClamp extends js.Object
+trait AnimatedDiffClamp extends js.Object
 
 @js.native
 trait AnimatedEndResult extends js.Object {
@@ -147,7 +148,7 @@ trait SpringAnimationConfig extends AnimatedConfig {
 }
 
 @js.native
-class AnimatedAddition extends js.Object
+trait AnimatedAddition extends js.Object
 
 @js.native
 @JSImport("react-native", "Animated.Value")
@@ -196,6 +197,8 @@ class AnimatedValueXY(valueIn: AnimatedValueXYValue = ???) extends js.Object {
   def setOffset(value: XYValueLiteral): Unit = js.native
 
   def flattenOffset(): Unit = js.native
+
+  def removeAllListeners(): Unit = js.native
 
   def stopAnimation(callback: XYValueLiteral => _ = ???): Unit = js.native
 

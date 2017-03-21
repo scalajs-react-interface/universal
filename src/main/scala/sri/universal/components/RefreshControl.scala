@@ -1,36 +1,19 @@
 package sri.universal.components
 
-import sri.core.ReactClass
+import sri.core.JSComponent
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.{JSImport, ScalaJSDefined}
 import scala.scalajs.js.{UndefOr => U}
 
-
 @js.native
-@JSImport("react-native","RefreshControl")
-object RefreshControlClass extends ReactClass {
+@JSImport("react-native", "RefreshControl")
+object RefreshControlComponent extends JSComponent[RefreshControlProps] {
   val SIZE: js.Dynamic = js.native
 }
 
-@js.native
-trait RefreshControlM extends js.Object
-
 @ScalaJSDefined
-trait BaseRefreshControlProps extends js.Object {
-  var onRefresh: js.UndefOr[js.Function0[_]] = js.undefined
-  var refreshing: js.UndefOr[Boolean] = js.undefined
-  var tintColor: js.UndefOr[String] = js.undefined
-  var title: js.UndefOr[String] = js.undefined
-  var enabled: js.UndefOr[Boolean] = js.undefined
-  var colors: js.UndefOr[js.Array[String]] = js.undefined
-  var progressBackgroundColor: js.UndefOr[String] = js.undefined
-  var progressViewOffset: js.UndefOr[Double] = js.undefined
-  var size: js.UndefOr[RefreshControlSize] = js.undefined
-}
-
-@ScalaJSDefined
-trait BaseRefreshControlPropsVal extends js.Object {
+trait RefreshControlProps extends ViewProps {
   val onRefresh: js.UndefOr[js.Function0[_]] = js.undefined
   val refreshing: js.UndefOr[Boolean] = js.undefined
   val tintColor: js.UndefOr[String] = js.undefined
@@ -42,18 +25,12 @@ trait BaseRefreshControlPropsVal extends js.Object {
   val size: js.UndefOr[RefreshControlSize] = js.undefined
 }
 
-@ScalaJSDefined
-trait RefreshControlProps extends BaseRefreshControlProps with BaseViewProps with UniversalProps[RefreshControlM]
-
-@ScalaJSDefined
-trait RefreshControlPropsVal extends BaseRefreshControlPropsVal with BaseViewPropsVal with UniversalPropsVal[RefreshControlM]
-
-
-
 @js.native
 trait RefreshControlSize extends js.Object
 
 object RefreshControlSize {
-  val DEFAULT =  RefreshControlClass.SIZE.DEFAULT.asInstanceOf[RefreshControlSize]
-  val LARGE =  RefreshControlClass.SIZE.LARGE.asInstanceOf[RefreshControlSize]
+  @inline def DEFAULT =
+    RefreshControlComponent.SIZE.DEFAULT.asInstanceOf[RefreshControlSize]
+  @inline def LARGE =
+    RefreshControlComponent.SIZE.LARGE.asInstanceOf[RefreshControlSize]
 }

@@ -6,18 +6,22 @@ import scala.scalajs.js.annotation.{JSImport, ScalaJSDefined}
 
 @js.native
 trait Alert extends js.Object {
-  def alert(title: String = ???, message: String = ???, buttons: js.Array[AlertButton] = ???, options: AlertOptions = ???, `type`: String = "default"): Unit = js.native
+  def alert(title: String = ???,
+            message: String = ???,
+            buttons: js.Array[AlertButton] = ???,
+            options: AlertOptions = ???,
+            `type`: AlertType = AlertType.DEFAULT): Unit = js.native
 }
 
 @js.native
-@JSImport("react-native","Alert")
+@JSImport("react-native", "Alert")
 object Alert extends Alert
 
 @ScalaJSDefined
 trait AlertButton extends js.Object {
   var text: js.UndefOr[String] = js.undefined
   var onPress: js.UndefOr[js.Function] = js.undefined
-  var style: js.UndefOr[String] = js.undefined
+  var style: js.UndefOr[AlertButtonStyle] = js.undefined
 }
 
 @ScalaJSDefined
@@ -25,20 +29,25 @@ trait AlertOptions extends js.Object {
   var cancelable: js.UndefOr[Boolean] = js.undefined
 }
 
-object AlertTypes {
-  val DEFAULT = "default"
-  val PLAIN_TEXT = "plain-text"
-  val SECURE_TEXT = "secure-text"
-  val LOGIN_PASSWORD = "login-password"
+@ScalaJSDefined
+trait AlertType extends js.Object
+
+object AlertType {
+  final val DEFAULT = "default".asInstanceOf[AlertType]
+  final val PLAIN_TEXT = "plain-text".asInstanceOf[AlertType]
+  final val SECURE_TEXT = "secure-text".asInstanceOf[AlertType]
+  final val LOGIN_PASSWORD = "login-password".asInstanceOf[AlertType]
 }
 
-object AlertButtonStyles {
+@ScalaJSDefined
+trait AlertButtonStyle extends js.Object
 
-  val DEFAULT = "default"
+object AlertButtonStyle {
 
-  val CANCEL = "cancel"
+  final val DEFAULT = "default".asInstanceOf[AlertButtonStyle]
 
-  val DESTRUCTIVE = "destructive"
+  final val CANCEL = "cancel".asInstanceOf[AlertButtonStyle]
+
+  final val DESTRUCTIVE = "destructive".asInstanceOf[AlertButtonStyle]
 
 }
-

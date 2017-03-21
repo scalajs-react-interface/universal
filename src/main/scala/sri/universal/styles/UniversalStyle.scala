@@ -1,189 +1,157 @@
 package sri.universal.styles
 
-import sri.universal.apis.AnimatedValue
+import sri.macros.exclude
+import sri.universal.apis.{AnimatedValue, ReactNativePropRegistry}
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.ScalaJSDefined
 import scala.scalajs.js.|
-
-@ScalaJSDefined
-trait UniversalStyle extends js.Object {
-  var flex: js.UndefOr[Double | AnimatedValue] = js.undefined
-  var flexBasis: js.UndefOr[Double | AnimatedValue | String] = js.undefined
-  var flexShrink: js.UndefOr[Double | AnimatedValue] = js.undefined
-  var flexGrow: js.UndefOr[Double | AnimatedValue] = js.undefined
-  var borderBottomWidth: js.UndefOr[Double | AnimatedValue] = js.undefined
-  var borderLeftWidth: js.UndefOr[Double | AnimatedValue] = js.undefined
-  var borderRightWidth: js.UndefOr[Double | AnimatedValue] = js.undefined
-  var borderTopWidth: js.UndefOr[Double | AnimatedValue] = js.undefined
-  var borderWidth: js.UndefOr[Double | AnimatedValue] = js.undefined
-  var bottom: js.UndefOr[Double | AnimatedValue] = js.undefined
-  var height: js.UndefOr[Double | AnimatedValue | String] = js.undefined
-  var left: js.UndefOr[Double | AnimatedValue] = js.undefined
-  var margin: js.UndefOr[Double | AnimatedValue | String] = js.undefined
-  var marginBottom: js.UndefOr[Double | AnimatedValue] = js.undefined
-  var marginHorizontal: js.UndefOr[Double | AnimatedValue] = js.undefined
-  var marginLeft: js.UndefOr[Double | AnimatedValue] = js.undefined
-  var marginRight: js.UndefOr[Double | AnimatedValue] = js.undefined
-  var marginTop: js.UndefOr[Double | AnimatedValue] = js.undefined
-  var marginVertical: js.UndefOr[Double | AnimatedValue] = js.undefined
-  var maxHeight: js.UndefOr[Double | AnimatedValue | String] = js.undefined
-  var maxWidth: js.UndefOr[Double | AnimatedValue | String] = js.undefined
-  var minHeight: js.UndefOr[Double | AnimatedValue | String] = js.undefined
-  var minWidth: js.UndefOr[Double | AnimatedValue | String] = js.undefined
-  var padding: js.UndefOr[Double | AnimatedValue | String] = js.undefined
-  var paddingBottom: js.UndefOr[Double | AnimatedValue] = js.undefined
-  var paddingHorizontal: js.UndefOr[Double | AnimatedValue] = js.undefined
-  var paddingLeft: js.UndefOr[Double | AnimatedValue] = js.undefined
-  var paddingRight: js.UndefOr[Double | AnimatedValue] = js.undefined
-  var paddingTop: js.UndefOr[Double | AnimatedValue] = js.undefined
-  var paddingVertical: js.UndefOr[Double | AnimatedValue] = js.undefined
-  var right: js.UndefOr[Double | AnimatedValue] = js.undefined
-  var top: js.UndefOr[Double | AnimatedValue] = js.undefined
-  var width: js.UndefOr[Double | AnimatedValue | String] = js.undefined
-  var zIndex: js.UndefOr[Double | AnimatedValue] = js.undefined
-  var letterSpacing: js.UndefOr[Double | AnimatedValue] = js.undefined
-  var overflow: js.UndefOr[String] = js.undefined
-  var position: js.UndefOr[String] = js.undefined
-  var flexDirection: js.UndefOr[String] = js.undefined
-  var flexWrap: js.UndefOr[String] = js.undefined
-  var alignItems: js.UndefOr[String] = js.undefined
-  var alignSelf: js.UndefOr[String] = js.undefined
-  var justifyContent: js.UndefOr[String] = js.undefined
-  var color: js.UndefOr[String] = js.undefined
-  var containerBackgroundColor: js.UndefOr[String] = js.undefined
-  var fontFamily: js.UndefOr[String] = js.undefined
-  var fontSize: js.UndefOr[Double | AnimatedValue] = js.undefined
-  var lineHeight: js.UndefOr[Double | AnimatedValue] = js.undefined
-  var textShadowOffset: js.UndefOr[js.Dynamic] = js.undefined
-  var textShadowRadius: js.UndefOr[Double | AnimatedValue] = js.undefined
-  var textShadowColor: js.UndefOr[String] = js.undefined
-  var textDecorationLine: js.UndefOr[String] = js.undefined
-  var fontStyle: js.UndefOr[String] = js.undefined
-  var textAlign: js.UndefOr[String] = js.undefined
-  var textAlignVertical: js.UndefOr[String] = js.undefined
-  var lineBreakMode: js.UndefOr[String] = js.undefined
-  var writingDirection: js.UndefOr[String] = js.undefined
-  var fontWeight: js.UndefOr[String] = js.undefined
-  var backgroundColor: js.UndefOr[String] = js.undefined
-  var borderColor: js.UndefOr[String] = js.undefined
-  var tintColor: js.UndefOr[String] = js.undefined
-  var overlayColor: js.UndefOr[String] = js.undefined
-  var borderRadius: js.UndefOr[Double | AnimatedValue] = js.undefined
-  var opacity: js.UndefOr[Double | AnimatedValue] = js.undefined
-  var resizeMode: js.UndefOr[String] = js.undefined
-  var aspectRatio: js.UndefOr[Double] = js.undefined
-  var borderBottomColor: js.UndefOr[String] = js.undefined
-  var borderLeftColor: js.UndefOr[String] = js.undefined
-  var borderRightColor: js.UndefOr[String] = js.undefined
-  var borderTopColor: js.UndefOr[String] = js.undefined
-  var borderStyle: js.UndefOr[String] = js.undefined
-  var rotation: js.UndefOr[Double | AnimatedValue] = js.undefined
-  var scaleX: js.UndefOr[Double | AnimatedValue] = js.undefined
-  var scaleY: js.UndefOr[Double | AnimatedValue] = js.undefined
-  var shadowOpacity: js.UndefOr[Double | AnimatedValue] = js.undefined
-  var shadowRadius: js.UndefOr[Double | AnimatedValue] = js.undefined
-  var translateX: js.UndefOr[Double | AnimatedValue] = js.undefined
-  var translateY: js.UndefOr[Double | AnimatedValue] = js.undefined
-  var elevation: js.UndefOr[Double | AnimatedValue] = js.undefined
-  var shadowColor: js.UndefOr[String] = js.undefined
-  var shadowOffset: js.UndefOr[js.Object] = js.undefined
-  var transformMatrix: js.UndefOr[js.Array[Double]] = js.undefined
-  var borderTopLeftRadius: js.UndefOr[Double | AnimatedValue] = js.undefined
-  var borderTopRightRadius: js.UndefOr[Double | AnimatedValue] = js.undefined
-  var borderBottomLeftRadius: js.UndefOr[Double | AnimatedValue] = js.undefined
-  var borderBottomRightRadius: js.UndefOr[Double | AnimatedValue] =
-    js.undefined
-  var transform: js.UndefOr[js.Array[js.Dynamic]] = js.undefined
+//import scala.scalajs.js.{UndefOr => U, undefined => NoValue}
+import sri.macros.{
+  FunctionObjectMacro,
+  OptDefault => NoValue,
+  OptionalParam => U
 }
 
-@ScalaJSDefined
-trait UniversalStyleVal extends js.Object {
-  val flex: js.UndefOr[Double | AnimatedValue] = js.undefined
-  val flexBasis: js.UndefOr[Double | AnimatedValue | String] = js.undefined
-  val flexShrink: js.UndefOr[Double | AnimatedValue] = js.undefined
-  val flexGrow: js.UndefOr[Double | AnimatedValue] = js.undefined
-  val borderBottomWidth: js.UndefOr[Double | AnimatedValue] = js.undefined
-  val borderLeftWidth: js.UndefOr[Double | AnimatedValue] = js.undefined
-  val borderRightWidth: js.UndefOr[Double | AnimatedValue] = js.undefined
-  val borderTopWidth: js.UndefOr[Double | AnimatedValue] = js.undefined
-  val borderWidth: js.UndefOr[Double | AnimatedValue] = js.undefined
-  val bottom: js.UndefOr[Double | AnimatedValue] = js.undefined
-  val height: js.UndefOr[Double | AnimatedValue | String] = js.undefined
-  val left: js.UndefOr[Double | AnimatedValue] = js.undefined
-  val margin: js.UndefOr[Double | AnimatedValue | String] = js.undefined
-  val marginBottom: js.UndefOr[Double | AnimatedValue] = js.undefined
-  val marginHorizontal: js.UndefOr[Double | AnimatedValue] = js.undefined
-  val marginLeft: js.UndefOr[Double | AnimatedValue] = js.undefined
-  val marginRight: js.UndefOr[Double | AnimatedValue] = js.undefined
-  val marginTop: js.UndefOr[Double | AnimatedValue] = js.undefined
-  val marginVertical: js.UndefOr[Double | AnimatedValue] = js.undefined
-  val maxHeight: js.UndefOr[Double | AnimatedValue | String] = js.undefined
-  val maxWidth: js.UndefOr[Double | AnimatedValue | String] = js.undefined
-  val minHeight: js.UndefOr[Double | AnimatedValue | String] = js.undefined
-  val minWidth: js.UndefOr[Double | AnimatedValue | String] = js.undefined
-  val padding: js.UndefOr[Double | AnimatedValue | String] = js.undefined
-  val paddingBottom: js.UndefOr[Double | AnimatedValue] = js.undefined
-  val paddingHorizontal: js.UndefOr[Double | AnimatedValue] = js.undefined
-  val paddingLeft: js.UndefOr[Double | AnimatedValue] = js.undefined
-  val paddingRight: js.UndefOr[Double | AnimatedValue] = js.undefined
-  val paddingTop: js.UndefOr[Double | AnimatedValue] = js.undefined
-  val paddingVertical: js.UndefOr[Double | AnimatedValue] = js.undefined
-  val right: js.UndefOr[Double | AnimatedValue] = js.undefined
-  val top: js.UndefOr[Double | AnimatedValue] = js.undefined
-  val width: js.UndefOr[Double | AnimatedValue | String] = js.undefined
-  val zIndex: js.UndefOr[Double | AnimatedValue] = js.undefined
-  val letterSpacing: js.UndefOr[Double | AnimatedValue] = js.undefined
-  val overflow: js.UndefOr[String] = js.undefined
-  val position: js.UndefOr[String] = js.undefined
-  val flexDirection: js.UndefOr[String] = js.undefined
-  val flexWrap: js.UndefOr[String] = js.undefined
-  val alignItems: js.UndefOr[String] = js.undefined
-  val alignSelf: js.UndefOr[String] = js.undefined
-  val justifyContent: js.UndefOr[String] = js.undefined
-  val color: js.UndefOr[String] = js.undefined
-  val containerBackgroundColor: js.UndefOr[String] = js.undefined
-  val fontFamily: js.UndefOr[String] = js.undefined
-  val fontSize: js.UndefOr[Double | AnimatedValue] = js.undefined
-  val lineHeight: js.UndefOr[Double | AnimatedValue] = js.undefined
-  val textShadowOffset: js.UndefOr[js.Dynamic] = js.undefined
-  val textShadowRadius: js.UndefOr[Double | AnimatedValue] = js.undefined
-  val textShadowColor: js.UndefOr[String] = js.undefined
-  val textDecorationLine: js.UndefOr[String] = js.undefined
-  val fontStyle: js.UndefOr[String] = js.undefined
-  val textAlign: js.UndefOr[String] = js.undefined
-  val textAlignVertical: js.UndefOr[String] = js.undefined
-  val lineBreakMode: js.UndefOr[String] = js.undefined
-  val writingDirection: js.UndefOr[String] = js.undefined
-  val fontWeight: js.UndefOr[String] = js.undefined
-  val backgroundColor: js.UndefOr[String] = js.undefined
-  val borderColor: js.UndefOr[String] = js.undefined
-  val tintColor: js.UndefOr[String] = js.undefined
-  val overlayColor: js.UndefOr[String] = js.undefined
-  val borderRadius: js.UndefOr[Double | AnimatedValue] = js.undefined
-  val opacity: js.UndefOr[Double | AnimatedValue] = js.undefined
-  val resizeMode: js.UndefOr[String] = js.undefined
-  val aspectRatio: js.UndefOr[Double] = js.undefined
-  val borderBottomColor: js.UndefOr[String] = js.undefined
-  val borderLeftColor: js.UndefOr[String] = js.undefined
-  val borderRightColor: js.UndefOr[String] = js.undefined
-  val borderTopColor: js.UndefOr[String] = js.undefined
-  val borderStyle: js.UndefOr[String] = js.undefined
-  val rotation: js.UndefOr[Double | AnimatedValue] = js.undefined
-  val scaleX: js.UndefOr[Double | AnimatedValue] = js.undefined
-  val scaleY: js.UndefOr[Double | AnimatedValue] = js.undefined
-  val shadowOpacity: js.UndefOr[Double | AnimatedValue] = js.undefined
-  val shadowRadius: js.UndefOr[Double | AnimatedValue] = js.undefined
-  val translateX: js.UndefOr[Double | AnimatedValue] = js.undefined
-  val translateY: js.UndefOr[Double | AnimatedValue] = js.undefined
-  val elevation: js.UndefOr[Double | AnimatedValue] = js.undefined
-  val shadowColor: js.UndefOr[String] = js.undefined
-  val shadowOffset: js.UndefOr[js.Object] = js.undefined
-  val transformMatrix: js.UndefOr[js.Array[Double]] = js.undefined
-  val borderTopLeftRadius: js.UndefOr[Double | AnimatedValue] = js.undefined
-  val borderTopRightRadius: js.UndefOr[Double | AnimatedValue] = js.undefined
-  val borderBottomLeftRadius: js.UndefOr[Double | AnimatedValue] = js.undefined
-  val borderBottomRightRadius: js.UndefOr[Double | AnimatedValue] =
-    js.undefined
-  val transform: js.UndefOr[js.Array[js.Dynamic]] = js.undefined
+trait UniversalStyleConstants {
+  @inline def visible = "visible"
+  @inline def hidden = "hidden"
+  @inline def scroll = "scroll"
+  @inline def absolute = "absolute"
+  @inline def relative = "relative"
+  @inline def row = "row"
+  @inline def column = "column"
+  @inline def center = "center"
+  @inline def wrap = "wrap"
+  @inline def nowrap = "nowrap"
+  @inline def flexEnd = "flex-end"
+  @inline def stretch = "stretch"
+  @inline def spaceBetween = "space-between"
+  @inline def spaceAround = "space-around"
+  @inline def normal = "normal"
+  @inline def italic = "italic"
+  @inline def left = "left"
+  @inline def right = "right"
+  @inline def auto = "auto"
+  @inline def top = "top"
+  @inline def bottom = "bottom"
+  @inline def clipping = "clipping"
+  @inline def wordWrapping = "word-wrapping"
+  @inline def charWrapping = "char-wrapping"
+  @inline def truncatingHead = "truncating-head"
+  @inline def truncatingMiddle = "truncating-middle"
+  @inline def truncatingTail = "truncating-tail"
+  @inline def ltr = "ltr"
+  @inline def rtl = "trl"
+  @inline def bold = "bold"
+  @inline def _100 = "100"
+  @inline def _200 = "200"
+  @inline def _300 = "300"
+  @inline def _400 = "400"
+  @inline def _500 = "500"
+  @inline def _600 = "600"
+  @inline def _700 = "700"
+  @inline def _800 = "800"
+  @inline def _900 = "900"
+  @inline def solid = "solid"
+  @inline def dotted = "dotted"
+  @inline def dashed = "dashed"
 }
+
+trait UniversalStyleSheet extends UniversalStyleConstants {
+
+  @inline
+  def style(flex: U[Double | AnimatedValue] = NoValue,
+            flexBasis: U[Double | AnimatedValue | String] = NoValue,
+            flexShrink: U[Double | AnimatedValue] = NoValue,
+            flexGrow: U[Double | AnimatedValue] = NoValue,
+            borderBottomWidth: U[Double | AnimatedValue] = NoValue,
+            borderLeftWidth: U[Double | AnimatedValue] = NoValue,
+            borderRightWidth: U[Double | AnimatedValue] = NoValue,
+            borderTopWidth: U[Double | AnimatedValue] = NoValue,
+            borderWidth: U[Double | AnimatedValue] = NoValue,
+            bottom: U[Double | AnimatedValue] = NoValue,
+            height: U[Double | AnimatedValue | String] = NoValue,
+            left: U[Double | AnimatedValue] = NoValue,
+            margin: U[Double | AnimatedValue | String] = NoValue,
+            marginBottom: U[Double | AnimatedValue] = NoValue,
+            marginHorizontal: U[Double | AnimatedValue] = NoValue,
+            marginLeft: U[Double | AnimatedValue] = NoValue,
+            marginRight: U[Double | AnimatedValue] = NoValue,
+            marginTop: U[Double | AnimatedValue] = NoValue,
+            marginVertical: U[Double | AnimatedValue] = NoValue,
+            maxHeight: U[Double | AnimatedValue | String] = NoValue,
+            maxWidth: U[Double | AnimatedValue | String] = NoValue,
+            minHeight: U[Double | AnimatedValue | String] = NoValue,
+            minWidth: U[Double | AnimatedValue | String] = NoValue,
+            padding: U[Double | AnimatedValue | String] = NoValue,
+            paddingBottom: U[Double | AnimatedValue] = NoValue,
+            paddingHorizontal: U[Double | AnimatedValue] = NoValue,
+            paddingLeft: U[Double | AnimatedValue] = NoValue,
+            paddingRight: U[Double | AnimatedValue] = NoValue,
+            paddingTop: U[Double | AnimatedValue] = NoValue,
+            paddingVertical: U[Double | AnimatedValue] = NoValue,
+            right: U[Double | AnimatedValue] = NoValue,
+            top: U[Double | AnimatedValue] = NoValue,
+            width: U[Double | AnimatedValue | String] = NoValue,
+            zIndex: U[Double | AnimatedValue] = NoValue,
+            letterSpacing: U[Double | AnimatedValue] = NoValue,
+            overflow: U[String] = NoValue,
+            position: U[String] = NoValue,
+            flexDirection: U[String] = NoValue,
+            flexWrap: U[String] = NoValue,
+            alignItems: U[String] = NoValue,
+            alignSelf: U[String] = NoValue,
+            justifyContent: U[String] = NoValue,
+            color: U[String] = NoValue,
+            containerBackgroundColor: U[String] = NoValue,
+            fontFamily: U[String] = NoValue,
+            fontSize: U[Double | AnimatedValue] = NoValue,
+            lineHeight: U[Double | AnimatedValue] = NoValue,
+            textShadowOffset: U[js.Dynamic] = NoValue,
+            textShadowRadius: U[Double | AnimatedValue] = NoValue,
+            textShadowColor: U[String] = NoValue,
+            textDecorationLine: U[String] = NoValue,
+            fontStyle: U[String] = NoValue,
+            textAlign: U[String] = NoValue,
+            textAlignVertical: U[String] = NoValue,
+            lineBreakMode: U[String] = NoValue,
+            writingDirection: U[String] = NoValue,
+            fontWeight: U[String] = NoValue,
+            backgroundColor: U[String] = NoValue,
+            borderColor: U[String] = NoValue,
+            tintColor: U[String] = NoValue,
+            overlayColor: U[String] = NoValue,
+            borderRadius: U[Double | AnimatedValue] = NoValue,
+            opacity: U[Double | AnimatedValue] = NoValue,
+            resizeMode: U[String] = NoValue,
+            aspectRatio: U[Double] = NoValue,
+            borderBottomColor: U[String] = NoValue,
+            borderLeftColor: U[String] = NoValue,
+            borderRightColor: U[String] = NoValue,
+            borderTopColor: U[String] = NoValue,
+            borderStyle: U[String] = NoValue,
+            rotation: U[Double | AnimatedValue] = NoValue,
+            scaleX: U[Double | AnimatedValue] = NoValue,
+            scaleY: U[Double | AnimatedValue] = NoValue,
+            shadowOpacity: U[Double | AnimatedValue] = NoValue,
+            shadowRadius: U[Double | AnimatedValue] = NoValue,
+            translateX: U[Double | AnimatedValue] = NoValue,
+            translateY: U[Double | AnimatedValue] = NoValue,
+            elevation: U[Double | AnimatedValue] = NoValue,
+            shadowColor: U[String] = NoValue,
+            shadowOffset: U[js.Object] = NoValue,
+            transformMatrix: U[js.Array[Double]] = NoValue,
+            borderTopLeftRadius: U[Double | AnimatedValue] = NoValue,
+            borderTopRightRadius: U[Double | AnimatedValue] = NoValue,
+            borderBottomLeftRadius: U[Double | AnimatedValue] = NoValue,
+            borderBottomRightRadius: U[Double | AnimatedValue] = NoValue,
+            transform: U[js.Array[js.Dynamic]] = NoValue,
+            @exclude registerStyle: Boolean = true): js.Any = {
+    val obj = FunctionObjectMacro()
+    if (registerStyle) ReactNativePropRegistry.register(obj) else obj
+  }
+}
+
+object UniversalStyleSheet extends UniversalStyleSheet
+
+object UniversalStyleConstants extends UniversalStyleConstants

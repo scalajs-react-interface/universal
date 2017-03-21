@@ -1,30 +1,18 @@
 package sri.universal.components
 
-import sri.core.ReactClass
+import sri.core.JSComponent
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.{JSImport, ScalaJSDefined}
 
 @js.native
 @JSImport("react-native", "TouchableOpacity")
-object TouchableOpacityClass extends ReactClass
+object TouchableOpacityComponent extends JSComponent[TouchableOpacityProps]
 
 @ScalaJSDefined
-trait BaseTouchableOpacityProps extends js.Object {
-  var activeOpacity: js.UndefOr[Double] = js.undefined
-}
-
-@ScalaJSDefined
-trait BaseTouchableOpacityPropsVal extends js.Object {
+trait TouchableOpacityProps extends TouchableWithoutFeedbackProps {
   val activeOpacity: js.UndefOr[Double] = js.undefined
 }
-
-@ScalaJSDefined
-trait TouchableOpacityProps extends BaseTouchableOpacityProps with BaseTouchableWithoutFeedbackProps with UniversalProps[TouchableOpacityM]
-
-@ScalaJSDefined
-trait TouchableOpacityPropsVal extends BaseTouchableOpacityPropsVal with BaseTouchableWithoutFeedbackPropsVal with UniversalPropsVal[TouchableOpacityM]
-
 
 @js.native
 trait TouchableOpacityM extends js.Object {
