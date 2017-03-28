@@ -20,6 +20,7 @@ trait UniversalStyleConstants {
   @inline def relative = "relative"
   @inline def row = "row"
   @inline def column = "column"
+  @inline def none = "none"
   @inline def center = "center"
   @inline def wrap = "wrap"
   @inline def nowrap = "nowrap"
@@ -80,6 +81,7 @@ trait UniversalStyleSheet extends UniversalStyleConstants {
             marginTop: U[Double | AnimatedValue] = NoValue,
             marginVertical: U[Double | AnimatedValue] = NoValue,
             maxHeight: U[Double | AnimatedValue | String] = NoValue,
+            alignContent: U[String] = NoValue,
             maxWidth: U[Double | AnimatedValue | String] = NoValue,
             minHeight: U[Double | AnimatedValue | String] = NoValue,
             minWidth: U[Double | AnimatedValue | String] = NoValue,

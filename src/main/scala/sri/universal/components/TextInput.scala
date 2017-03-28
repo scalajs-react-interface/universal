@@ -41,6 +41,7 @@ trait TextInputProps extends ViewProps {
   val autoFocus: js.UndefOr[Boolean] = js.undefined
   val spellCheck: js.UndefOr[Boolean] = js.undefined
   val autoCorrect: js.UndefOr[Boolean] = js.undefined
+  val caretHidden: js.UndefOr[Boolean] = js.undefined
   val disableExtractUI: js.UndefOr[Boolean] = js.undefined
   val autoCapitalize: js.UndefOr[TextInputAutoCapitalize] = js.undefined
   val bufferDelay: js.UndefOr[Int] = js.undefined

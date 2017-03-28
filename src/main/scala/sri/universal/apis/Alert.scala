@@ -26,17 +26,18 @@ trait AlertButton extends js.Object {
 
 @ScalaJSDefined
 trait AlertOptions extends js.Object {
-  var cancelable: js.UndefOr[Boolean] = js.undefined
+  val cancelable: js.UndefOr[Boolean] = js.undefined
+  val onDismiss: js.UndefOr[js.Function] = js.undefined
 }
 
 @ScalaJSDefined
 trait AlertType extends js.Object
 
 object AlertType {
-  final val DEFAULT = "default".asInstanceOf[AlertType]
-  final val PLAIN_TEXT = "plain-text".asInstanceOf[AlertType]
-  final val SECURE_TEXT = "secure-text".asInstanceOf[AlertType]
-  final val LOGIN_PASSWORD = "login-password".asInstanceOf[AlertType]
+  @inline def DEFAULT = "default".asInstanceOf[AlertType]
+  @inline def PLAIN_TEXT = "plain-text".asInstanceOf[AlertType]
+  @inline def SECURE_TEXT = "secure-text".asInstanceOf[AlertType]
+  @inline def LOGIN_PASSWORD = "login-password".asInstanceOf[AlertType]
 }
 
 @ScalaJSDefined
@@ -44,10 +45,10 @@ trait AlertButtonStyle extends js.Object
 
 object AlertButtonStyle {
 
-  final val DEFAULT = "default".asInstanceOf[AlertButtonStyle]
+  @inline def DEFAULT = "default".asInstanceOf[AlertButtonStyle]
 
-  final val CANCEL = "cancel".asInstanceOf[AlertButtonStyle]
+  @inline def CANCEL = "cancel".asInstanceOf[AlertButtonStyle]
 
-  final val DESTRUCTIVE = "destructive".asInstanceOf[AlertButtonStyle]
+  @inline def DESTRUCTIVE = "destructive".asInstanceOf[AlertButtonStyle]
 
 }

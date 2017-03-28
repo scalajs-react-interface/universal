@@ -34,6 +34,7 @@ trait ViewProps extends js.Object {
     js.undefined
   val onAcccessibilityTap: js.UndefOr[js.Function] = js.undefined
   val collapsible: js.UndefOr[Boolean] = js.undefined
+  val accessibilityViewIsModal: js.UndefOr[Boolean] = js.undefined
   val needsOffscreenAlphaCompositing: js.UndefOr[Boolean] = js.undefined
   val onResponderTerminationRequest: js.UndefOr[js.Function] = js.undefined
   val testID: js.UndefOr[String] = js.undefined

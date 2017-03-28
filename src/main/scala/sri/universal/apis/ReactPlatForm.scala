@@ -12,8 +12,8 @@ trait ReactPlatForm extends js.Object {
 }
 
 @js.native
-@JSImport("react-native","Platform")
-object Platform extends ReactPlatForm
+@JSImport("react-native", "Platform")
+object ReactPlatform extends ReactPlatForm
 
 @ScalaJSDefined
 trait PlatformSelect extends js.Object {

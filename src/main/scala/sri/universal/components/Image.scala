@@ -52,12 +52,15 @@ trait ImageSource extends js.Object {
   var uri: String
   var isStatic: js.UndefOr[Boolean] = js.undefined
   var scale: js.UndefOr[Double] = js.undefined
+  var headers: js.UndefOr[js.Dictionary[String]] = js.undefined
 }
 
 object ImageSource {
   @inline
   def apply(uri: String,
-            scale: OptionalParam[Double] = OptDefault): ImageSource = {
+            scale: OptionalParam[Double] = OptDefault,
+            headers: OptionalParam[js.Dictionary[String]] = OptDefault)
+    : ImageSource = {
     val p = FunctionObjectMacro()
     p.asInstanceOf[ImageSource]
   }
