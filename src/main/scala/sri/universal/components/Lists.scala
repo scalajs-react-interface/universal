@@ -149,10 +149,7 @@ trait SectionItem[I] extends js.Object {
 trait VirtualizedSectionListProps[D, I] extends VirtualizedListProps[D, I] {
   val sections: U[js.Array[SectionBase[I]]] = undefined
   val enableVirtualization: U[Boolean] = undefined
-  val ListFooterComponent: U[js.Function0[ReactElement]] = undefined
-  val ListHeaderComponent: U[js.Function0[ReactElement]] = undefined
   val SectionSeparatorComponent: U[js.Function0[ReactElement]] = undefined
-  val ItemSeparatorComponent: U[js.Function0[ReactElement]] = undefined
   val renderSectionHeader: U[js.Function1[SectionItem[I], ReactElement]] =
     undefined
 }
