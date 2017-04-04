@@ -86,9 +86,9 @@ trait ScrollToOffsetParams extends ScrollToEndParams {
 
 @ScalaJSDefined
 trait VirtualizedListProps[D, I] extends js.Object {
-  val FooterComponent: U[js.Function0[ReactElement]] = undefined
-  val HeaderComponent: U[js.Function0[ReactElement]] = undefined
-  val SeparatorComponent: U[js.Function0[ReactElement]] = undefined
+  val ListFooterComponent: U[js.Function0[ReactElement]] = undefined
+  val ListHeaderComponent: U[js.Function0[ReactElement]] = undefined
+  val ItemSeparatorComponent: U[js.Function0[ReactElement]] = undefined
   val debug: U[Boolean] = undefined
   val data: U[D] = undefined
   val horizontal: U[Boolean] = undefined
