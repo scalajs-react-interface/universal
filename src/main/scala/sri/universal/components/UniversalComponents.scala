@@ -613,7 +613,7 @@ trait UniversalComponents {
     implicit def dataTOAny(in: D): js.Any = in.asInstanceOf[js.Any]
     val props = FunctionObjectMacro()
     extraProps.foreach(v => { MergeJSObjects(props, v) })
-    CreateElementJS[VirtualizedListComponent.type](
+    CreateElementJSNoInline[VirtualizedListComponent.type](
       VirtualizedListComponent,
       props.asInstanceOf[VirtualizedListProps[_, _]],
       key,
@@ -657,7 +657,7 @@ trait UniversalComponents {
     : ReactElement { type Instance = FlatListComponent.type } = {
     val props = FunctionObjectMacro()
     extraProps.foreach(v => { MergeJSObjects(props, v) })
-    CreateElementJS[FlatListComponent.type](
+    CreateElementJSNoInline[FlatListComponent.type](
       FlatListComponent,
       props.asInstanceOf[FlatListProps[I]],
       key,
@@ -703,7 +703,7 @@ trait UniversalComponents {
     : ReactElement { type Instance = SectionListComponent.type } = {
     val props = FunctionObjectMacro()
     extraProps.foreach(v => { MergeJSObjects(props, v) })
-    CreateElementJS[SectionListComponent.type](
+    CreateElementJSNoInline[SectionListComponent.type](
       SectionListComponent,
       props.asInstanceOf[SectionListProps[I]],
       key,
