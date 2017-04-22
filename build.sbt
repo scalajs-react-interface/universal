@@ -21,7 +21,7 @@ scalacOptions ++= Seq(
 )
 
 //Dependencies
-libraryDependencies += "scalajs-react-interface" %%% "core" % "2017.3.26-beta" % Provided
+libraryDependencies += "scalajs-react-interface" %%% "core" % "2017.4.23-beta" % Provided
 libraryDependencies += "scalajs-react-interface" %%% "macros" % "2017.3.26-beta"
 libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "0.9.1"
 
