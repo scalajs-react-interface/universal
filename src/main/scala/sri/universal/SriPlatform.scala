@@ -1,6 +1,6 @@
 package sri.universal
 
-trait SriPlatForm {
+trait SriPlatform {
   def isAndroid: Boolean
   def isIOS: Boolean
   def isWeb: Boolean
