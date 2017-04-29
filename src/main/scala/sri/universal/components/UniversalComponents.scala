@@ -80,7 +80,7 @@ trait UniversalComponents {
     : ReactElement { type Instance = ActivityIndicatorComponent.type } = {
     val props = FunctionObjectMacro()
     extraProps.foreach(v => { MergeJSObjects(props, v) })
-    CreateElementJS[ActivityIndicatorComponent.type](
+    CreateElementJSNoInline[ActivityIndicatorComponent.type](
       ActivityIndicatorComponent,
       props.asInstanceOf[ActivityIndicatorProps],
       key,
@@ -194,7 +194,7 @@ trait UniversalComponents {
     : ReactElement { type Instance = KeyboardAvoidingViewComponent.type } = {
     val props = FunctionObjectMacro()
     extraProps.foreach(v => { MergeJSObjects(props, v) })
-    CreateElementJS[KeyboardAvoidingViewComponent.type](
+    CreateElementJSNoInline[KeyboardAvoidingViewComponent.type](
       KeyboardAvoidingViewComponent,
       props.asInstanceOf[KeyboardAvoidingViewProps],
       key,
@@ -204,7 +204,7 @@ trait UniversalComponents {
 
   @inline
   def KeyboardAvoidingView(children: ReactNode*) =
-    CreateElementJS[KeyboardAvoidingViewComponent.type](
+    CreateElementJSNoInline[KeyboardAvoidingViewComponent.type](
       KeyboardAvoidingViewComponent,
       json().asInstanceOf[KeyboardAvoidingViewProps],
       children = children.toJSArray)
@@ -227,7 +227,7 @@ trait UniversalComponents {
     : ReactElement { type Instance = ScrollViewComponent.type } = {
     val props = FunctionObjectMacro()
     extraProps.foreach(v => { MergeJSObjects(props, v) })
-    CreateElementJS[ScrollViewComponent.type](
+    CreateElementJSNoInline[ScrollViewComponent.type](
       ScrollViewComponent,
       props.asInstanceOf[ScrollViewProps],
       key,
@@ -237,7 +237,7 @@ trait UniversalComponents {
 
   @inline
   def ScrollView(children: ReactNode*) =
-    CreateElementJS[ScrollViewComponent.type](
+    CreateElementJSNoInline[ScrollViewComponent.type](
       ScrollViewComponent,
       json().asInstanceOf[ScrollViewProps],
       children = children.toJSArray)
@@ -285,18 +285,20 @@ trait UniversalComponents {
     : ReactElement { type Instance = ModalComponent.type } = {
     val props = FunctionObjectMacro()
     extraProps.foreach(v => { MergeJSObjects(props, v) })
-    CreateElementJS[ModalComponent.type](ModalComponent,
-                                         props.asInstanceOf[ModalProps],
-                                         key,
-                                         ref,
-                                         children.toJSArray)
+    CreateElementJSNoInline[ModalComponent.type](
+      ModalComponent,
+      props.asInstanceOf[ModalProps],
+      key,
+      ref,
+      children.toJSArray)
   }
 
   @inline
   def Modal(children: ReactNode*) =
-    CreateElementJS[ModalComponent.type](ModalComponent,
-                                         json().asInstanceOf[ModalProps],
-                                         children = children.toJSArray)
+    CreateElementJSNoInline[ModalComponent.type](
+      ModalComponent,
+      json().asInstanceOf[ModalProps],
+      children = children.toJSArray)
 
   @inline
   def Picker[T](style: U[js.Any] = NoValue,
@@ -310,18 +312,20 @@ trait UniversalComponents {
     implicit def toToAny(t: T): js.Any = t.asInstanceOf[js.Any]
     val props = FunctionObjectMacro()
     extraProps.foreach(v => { MergeJSObjects(props, v) })
-    CreateElementJS[PickerComponent.type](PickerComponent,
-                                          props.asInstanceOf[PickerProps[T]],
-                                          key,
-                                          ref,
-                                          children.toJSArray)
+    CreateElementJSNoInline[PickerComponent.type](
+      PickerComponent,
+      props.asInstanceOf[PickerProps[T]],
+      key,
+      ref,
+      children.toJSArray)
   }
 
   @inline
   def Picker(children: ReactNode*) =
-    CreateElementJS[PickerComponent.type](PickerComponent,
-                                          json().asInstanceOf[PickerProps[_]],
-                                          children = children.toJSArray)
+    CreateElementJSNoInline[PickerComponent.type](
+      PickerComponent,
+      json().asInstanceOf[PickerProps[_]],
+      children = children.toJSArray)
 
   @inline
   def PickerItem[T](
@@ -335,7 +339,7 @@ trait UniversalComponents {
     implicit def toToAny(t: T): js.Any = t.asInstanceOf[js.Any]
     val props = FunctionObjectMacro()
     extraProps.foreach(v => { MergeJSObjects(props, v) })
-    CreateElementJS[PickerItemComponent.type](
+    CreateElementJSNoInline[PickerItemComponent.type](
       PickerItemComponent,
       props.asInstanceOf[PickerItemProps[T]],
       key,
@@ -352,10 +356,11 @@ trait UniversalComponents {
     : ReactElement { type Instance = SliderComponent.type } = {
     val props = FunctionObjectMacro()
     extraProps.foreach(v => { MergeJSObjects(props, v) })
-    CreateElementJS[SliderComponent.type](SliderComponent,
-                                          props.asInstanceOf[SliderProps],
-                                          key,
-                                          ref)
+    CreateElementJSNoInline[SliderComponent.type](
+      SliderComponent,
+      props.asInstanceOf[SliderProps],
+      key,
+      ref)
   }
 
   @inline
@@ -371,10 +376,11 @@ trait UniversalComponents {
     : ReactElement { type Instance = SwitchComponent.type } = {
     val props = FunctionObjectMacro()
     extraProps.foreach(v => { MergeJSObjects(props, v) })
-    CreateElementJS[SwitchComponent.type](SwitchComponent,
-                                          props.asInstanceOf[SwitchProps],
-                                          key,
-                                          ref)
+    CreateElementJSNoInline[SwitchComponent.type](
+      SwitchComponent,
+      props.asInstanceOf[SwitchProps],
+      key,
+      ref)
   }
 
   @inline
@@ -389,18 +395,18 @@ trait UniversalComponents {
     : ReactElement { type Instance = TextComponent.type } = {
     val props = FunctionObjectMacro()
     extraProps.foreach(v => { MergeJSObjects(props, v) })
-    CreateElementJS[TextComponent.type](TextComponent,
-                                        props.asInstanceOf[TextProps],
-                                        key,
-                                        ref,
-                                        children.toJSArray)
+    CreateElementJSNoInline[TextComponent.type](TextComponent,
+                                                props.asInstanceOf[TextProps],
+                                                key,
+                                                ref,
+                                                children.toJSArray)
   }
 
   @inline
   def Text(children: ReactNode*) =
-    CreateElementJS[TextComponent.type](TextComponent,
-                                        json().asInstanceOf[TextProps],
-                                        children = children.toJSArray)
+    CreateElementJSNoInline[TextComponent.type](TextComponent,
+                                                json().asInstanceOf[TextProps],
+                                                children = children.toJSArray)
 
   @inline
   def AnimatedText(
@@ -412,18 +418,20 @@ trait UniversalComponents {
     : ReactElement { type Instance = AnimatedTextComponent.type } = {
     val props = FunctionObjectMacro()
     extraProps.foreach(v => { MergeJSObjects(props, v) })
-    CreateElementJS[AnimatedTextComponent.type](AnimatedTextComponent,
-                                                props.asInstanceOf[TextProps],
-                                                key,
-                                                ref,
-                                                children.toJSArray)
+    CreateElementJSNoInline[AnimatedTextComponent.type](
+      AnimatedTextComponent,
+      props.asInstanceOf[TextProps],
+      key,
+      ref,
+      children.toJSArray)
   }
 
   @inline
   def AnimatedText(children: ReactNode*) =
-    CreateElementJS[AnimatedTextComponent.type](AnimatedTextComponent,
-                                                json().asInstanceOf[TextProps],
-                                                children = children.toJSArray)
+    CreateElementJSNoInline[AnimatedTextComponent.type](
+      AnimatedTextComponent,
+      json().asInstanceOf[TextProps],
+      children = children.toJSArray)
 
   @inline
   def TextInput(style: U[js.Any] = NoValue,
@@ -447,7 +455,7 @@ trait UniversalComponents {
     : ReactElement { type Instance = TextInputComponent.type } = {
     val props = FunctionObjectMacro()
     extraProps.foreach(v => { MergeJSObjects(props, v) })
-    CreateElementJS[TextInputComponent.type](
+    CreateElementJSNoInline[TextInputComponent.type](
       TextInputComponent,
       props.asInstanceOf[TextInputProps],
       key,
@@ -473,7 +481,7 @@ trait UniversalComponents {
     : ReactElement { type Instance = TextInputComponent.type } = {
     val props = FunctionObjectMacro()
     extraProps.foreach(v => { MergeJSObjects(props, v) })
-    CreateElementJS[TextInputComponent.type](
+    CreateElementJSNoInline[TextInputComponent.type](
       TextInputComponent,
       props.asInstanceOf[TextInputProps],
       key,
@@ -496,7 +504,7 @@ trait UniversalComponents {
   } = {
     val props = FunctionObjectMacro()
     extraProps.foreach(v => { MergeJSObjects(props, v) })
-    CreateElementJS[TouchableWithoutFeedbackComponent.type](
+    CreateElementJSNoInline[TouchableWithoutFeedbackComponent.type](
       TouchableWithoutFeedbackComponent,
       props.asInstanceOf[TouchableWithoutFeedbackProps],
       key,
@@ -522,7 +530,7 @@ trait UniversalComponents {
     : ReactElement { type Instance = TouchableHighlightComponent.type } = {
     val props = FunctionObjectMacro()
     extraProps.foreach(v => { MergeJSObjects(props, v) })
-    CreateElementJS[TouchableHighlightComponent.type](
+    CreateElementJSNoInline[TouchableHighlightComponent.type](
       TouchableHighlightComponent,
       props.asInstanceOf[TouchableHighlightProps],
       key,
@@ -545,7 +553,7 @@ trait UniversalComponents {
     : ReactElement { type Instance = TouchableOpacityComponent.type } = {
     val props = FunctionObjectMacro()
     extraProps.foreach(v => { MergeJSObjects(props, v) })
-    CreateElementJS[TouchableOpacityComponent.type](
+    CreateElementJSNoInline[TouchableOpacityComponent.type](
       TouchableOpacityComponent,
       props.asInstanceOf[TouchableOpacityProps],
       key,
@@ -568,7 +576,7 @@ trait UniversalComponents {
     : ReactElement { type Instance = RefreshControlComponent.type } = {
     val props = FunctionObjectMacro()
     extraProps.foreach(v => { MergeJSObjects(props, v) })
-    CreateElementJS[RefreshControlComponent.type](
+    CreateElementJSNoInline[RefreshControlComponent.type](
       RefreshControlComponent,
       props.asInstanceOf[RefreshControlProps],
       key,
