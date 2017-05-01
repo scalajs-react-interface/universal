@@ -91,6 +91,7 @@ trait VirtualizedListProps[D, I] extends js.Object {
   val ItemSeparatorComponent: U[js.Function0[ReactElement]] = undefined
   val debug: U[Boolean] = undefined
   val data: U[D] = undefined
+  val extraData: U[js.Any] = undefined
   val horizontal: U[Boolean] = undefined
   val initialNumToRender: U[Int] = undefined
   val maxToRenderPerBatch: U[Int] = undefined
@@ -103,9 +104,6 @@ trait VirtualizedListProps[D, I] extends js.Object {
   val removeClippedSubviews: U[Boolean] = undefined
   val onEndReached: U[OnEndReachedInfo] = undefined
   val getItem: U[js.Function2[D, Int, I]] = undefined
-  val shouldItemUpdate: U[
-    js.Function2[ListItem[I] /*previous*/, ListItem[I] /*next*/, Boolean]] =
-    undefined
   val getItemCount: U[js.Function1[D, Int]] = undefined
   val onViewableItemsChanged
     : U[js.Function1[OnViewableItemsChanged[I], Unit]] =
@@ -149,6 +147,7 @@ trait SectionItem[I] extends js.Object {
 trait VirtualizedSectionListProps[D, I] extends VirtualizedListProps[D, I] {
   val sections: U[js.Array[SectionBase[I]]] = undefined
   val enableVirtualization: U[Boolean] = undefined
+  val stickySectionHeadersEnabled: U[Boolean] = undefined
   val SectionSeparatorComponent: U[js.Function0[ReactElement]] = undefined
   val renderSectionHeader: U[js.Function1[SectionItem[I], ReactElement]] =
     undefined
