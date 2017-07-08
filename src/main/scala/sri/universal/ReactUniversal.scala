@@ -9,7 +9,7 @@ import sri.universal.apis.{
   Keyboard,
   PanResponder,
   PixelRatio,
-  ReactPlatForm,
+  ReactPlatform,
   StyleSheet
 }
 
@@ -62,10 +62,6 @@ trait ReactUniversal extends js.Object {
   //  val Dimensions: js.Dynamic = js.native
 
   //misc
-  val Platform: ReactPlatForm = js.native
+  val Platform: ReactPlatform = js.native
 
 }
-
-//@js.native
-//@JSImport("react-native", JSImport.Namespace)
-//object ReactUniversal extends ReactUniversal

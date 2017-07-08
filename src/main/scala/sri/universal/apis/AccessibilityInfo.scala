@@ -14,6 +14,10 @@ trait AccessibilityInfo extends js.Object {
 
   def removeEventListener(eventName: String, handler: js.Function): Unit =
     js.native
+
+  def setAccessibilityFocus(reactTag: Double): Unit = js.native
+
+  def announceForAccessibility(announcement: String): Unit = js.native
 }
 
 @js.native

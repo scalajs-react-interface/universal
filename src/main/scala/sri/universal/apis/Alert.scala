@@ -2,7 +2,7 @@ package sri.universal.apis
 
 import scala.scalajs.js
 import scala.scalajs.js.Dynamic.{literal => json}
-import scala.scalajs.js.annotation.{JSImport, ScalaJSDefined}
+import scala.scalajs.js.annotation.JSImport
 
 @js.native
 trait Alert extends js.Object {
@@ -17,20 +17,17 @@ trait Alert extends js.Object {
 @JSImport("react-native", "Alert")
 object Alert extends Alert
 
-@ScalaJSDefined
 trait AlertButton extends js.Object {
   var text: js.UndefOr[String] = js.undefined
   var onPress: js.UndefOr[js.Function] = js.undefined
   var style: js.UndefOr[AlertButtonStyle] = js.undefined
 }
 
-@ScalaJSDefined
 trait AlertOptions extends js.Object {
   val cancelable: js.UndefOr[Boolean] = js.undefined
   val onDismiss: js.UndefOr[js.Function] = js.undefined
 }
 
-@ScalaJSDefined
 trait AlertType extends js.Object
 
 object AlertType {
@@ -40,7 +37,6 @@ object AlertType {
   @inline def LOGIN_PASSWORD = "login-password".asInstanceOf[AlertType]
 }
 
-@ScalaJSDefined
 trait AlertButtonStyle extends js.Object
 
 object AlertButtonStyle {

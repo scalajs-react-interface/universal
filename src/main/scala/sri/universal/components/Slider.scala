@@ -1,16 +1,23 @@
 package sri.universal.components
 
-import sri.core.JSComponent
+import sri.core.{JSComponent, _}
+import sri.macros.{
+  FunctionObjectMacro,
+  exclude,
+  OptDefault => NoValue,
+  OptionalParam => OP
+}
+import sri.universal.MergeJSObjects
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.{JSImport, JSName, ScalaJSDefined}
-import scala.scalajs.js.{UndefOr => U}
+import scala.scalajs.js.Dynamic.{literal => json}
+import scala.scalajs.js.annotation.{JSImport, JSName}
+import scala.scalajs.js.{|, UndefOr => U}
 
 @js.native
 @JSImport("react-native", "Slider")
 object SliderComponent extends JSComponent[SliderProps]
 
-@ScalaJSDefined
 trait SliderProps extends ViewProps {
   val minimumTrackTintColor: js.UndefOr[String] = js.undefined
   val minimumValue: js.UndefOr[Double] = js.undefined
@@ -33,4 +40,26 @@ trait SliderProps extends ViewProps {
   val step: js.UndefOr[Double] = js.undefined
   val disabled: js.UndefOr[Boolean] = js.undefined
   val maximumValue: js.UndefOr[Double] = js.undefined
+}
+
+object Slider {
+  @inline
+  def apply(style: OP[js.Any] = NoValue,
+            value: OP[Double] = NoValue,
+            onValueChange: OP[Double => _] = NoValue,
+            @exclude extraProps: OP[SliderProps] = NoValue,
+            @exclude key: String | Int = null,
+            @exclude ref: js.Function1[SliderComponent.type, Unit] = null)
+    : ReactElement { type Instance = SliderComponent.type } = {
+    val props = FunctionObjectMacro()
+    extraProps.foreach(v => {
+      MergeJSObjects(props, v)
+    })
+    CreateElementJSNoInline[SliderComponent.type](
+      SliderComponent,
+      props.asInstanceOf[SliderProps],
+      key,
+      ref)
+  }
+
 }

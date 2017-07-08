@@ -1,10 +1,19 @@
 package sri.universal.components
 
-import sri.core.JSComponent
-import sri.universal.{ReactEvent, TextInputEvent}
+import sri.core.{JSComponent, _}
+import sri.macros.{
+  FunctionObjectMacro,
+  exclude,
+  OptDefault => NoValue,
+  OptionalParam => OP
+}
+import sri.universal.{MergeJSObjects, ReactEvent, TextInputEvent}
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.{JSImport, ScalaJSDefined}
+import scala.scalajs.js.Dynamic.{literal => json}
+import scala.scalajs.js.JSConverters.genTravConvertible2JSRichGenTrav
+import scala.scalajs.js.annotation.JSImport
+import scala.scalajs.js.|
 
 @js.native
 @JSImport("react-native", "TextInput")
@@ -12,7 +21,6 @@ object TextInputComponent extends JSComponent[TextInputProps] {
   def blur(): Unit = js.native
 }
 
-@ScalaJSDefined
 trait TextInputProps extends ViewProps {
   val onBlur: js.UndefOr[js.Function1[ReactEvent[TextInputEvent], Unit]] =
     js.undefined
@@ -158,8 +166,69 @@ object TextInputTextAlignVertical {
   @inline def BOTTOM = "bottom".asInstanceOf[TextInputTextAlignVertical]
 }
 
-@ScalaJSDefined
 trait TextInputSelection extends js.Object {
   var start: js.UndefOr[Double] = js.undefined
   val end: js.UndefOr[Double] = js.undefined
+}
+
+object TextInput {
+
+  @inline
+  def apply(style: OP[js.Any] = NoValue,
+            autoCorrect: OP[Boolean] = NoValue,
+            autoFocus: OP[Boolean] = NoValue,
+            placeholder: OP[String] = NoValue,
+            value: OP[String] = NoValue,
+            underlineColorAndroid: OP[String] = NoValue,
+            autoCapitalize: OP[TextInputAutoCapitalize] = NoValue,
+            clearButtonMode: OP[String] = NoValue,
+            onFocus: OP[ReactEvent[TextInputEvent] => _] = NoValue,
+            onBlur: OP[ReactEvent[TextInputEvent] => _] = NoValue,
+            onChange: OP[ReactEvent[TextInputEvent] => _] = NoValue,
+            onChangeText: OP[String => _] = NoValue,
+            onEndEditing: OP[ReactEvent[TextInputEvent] => _] = NoValue,
+            onSubmitEditing: OP[ReactEvent[TextInputEvent] => _] = NoValue,
+            @exclude extraProps: OP[TextInputProps] = NoValue,
+            @exclude key: String | Int = null,
+            @exclude ref: js.Function1[TextInputComponent.type, Unit] = null)
+    : ReactElement { type Instance = TextInputComponent.type } = {
+    val props = FunctionObjectMacro()
+    extraProps.foreach(v => {
+      MergeJSObjects(props, v)
+    })
+    CreateElementJSNoInline[TextInputComponent.type](
+      TextInputComponent,
+      props.asInstanceOf[TextInputProps],
+      key,
+      ref)
+  }
+}
+
+object TextInputWithC {
+  @inline
+  def apply(style: OP[js.Any] = NoValue,
+            autoCorrect: OP[Boolean] = NoValue,
+            autoFocus: OP[Boolean] = NoValue,
+            placeholder: OP[String] = NoValue,
+            autoCapitalize: OP[TextInputAutoCapitalize] = NoValue,
+            clearButtonMode: OP[String] = NoValue,
+            onFocus: OP[ReactEvent[TextInputEvent] => _] = NoValue,
+            onBlur: OP[ReactEvent[TextInputEvent] => _] = NoValue,
+            onChange: OP[ReactEvent[TextInputEvent] => _] = NoValue,
+            onEndEditing: OP[ReactEvent[TextInputEvent] => _] = NoValue,
+            onSubmitEditing: OP[ReactEvent[TextInputEvent] => _] = NoValue,
+            @exclude extraProps: OP[TextInputProps] = NoValue,
+            @exclude key: String | Int = null,
+            @exclude ref: js.Function1[TextInputComponent.type, Unit] = null)(
+      children: ReactNode*)
+    : ReactElement { type Instance = TextInputComponent.type } = {
+    val props = FunctionObjectMacro()
+    extraProps.foreach(v => { MergeJSObjects(props, v) })
+    CreateElementJSNoInline[TextInputComponent.type](
+      TextInputComponent,
+      props.asInstanceOf[TextInputProps],
+      key,
+      ref,
+      children.toJSArray)
+  }
 }

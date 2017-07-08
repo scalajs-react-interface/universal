@@ -1,17 +1,25 @@
 package sri.universal.components
 
-import sri.core.JSComponent
+import sri.core.{JSComponent, _}
+import sri.macros.{
+  FunctionObjectMacro,
+  exclude,
+  OptDefault => NoValue,
+  OptionalParam => OP
+}
 import sri.universal.apis.LayoutEvent
-import sri.universal.{ReactEvent, SyntheticEvent}
+import sri.universal.{MergeJSObjects, ReactEvent, SyntheticEvent}
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.{JSImport, ScalaJSDefined}
+import scala.scalajs.js.Dynamic.{literal => json}
+import scala.scalajs.js.JSConverters.genTravConvertible2JSRichGenTrav
+import scala.scalajs.js.annotation.JSImport
+import scala.scalajs.js.|
 
 @js.native
 @JSImport("react-native", "Text")
 object TextComponent extends JSComponent[TextProps]
 
-@ScalaJSDefined
 trait TextProps extends js.Object {
   val suppressHighlighting: js.UndefOr[Boolean] = js.undefined
   val selectionColor: js.UndefOr[String] = js.undefined
@@ -38,4 +46,39 @@ object LineBreakMode {
   val MIDDLE = new LineBreakMode("middle")
   val TAIL = new LineBreakMode("tail")
   val CLIP = new LineBreakMode("clip")
+}
+
+object Text {
+
+  @inline
+  def apply(style: OP[js.Any] = NoValue,
+            onPress: OP[() => _] = NoValue,
+            onLayout: OP[LayoutEvent => _] = NoValue,
+            numberOfLines: OP[Int] = NoValue,
+            @exclude extraProps: OP[TextProps] = NoValue,
+            @exclude key: String | Int = null,
+            @exclude ref: js.Function1[TextComponent.type, Unit] = null)(
+      children: ReactNode*)
+    : ReactElement { type Instance = TextComponent.type } = {
+    val props = FunctionObjectMacro()
+    extraProps.foreach(v => {
+      MergeJSObjects(props, v)
+    })
+    CreateElementJSNoInline[TextComponent.type](TextComponent,
+                                                props.asInstanceOf[TextProps],
+                                                key,
+                                                ref,
+                                                children.toJSArray)
+  }
+
+}
+
+object TextC {
+
+  @inline
+  def apply(children: ReactNode*) =
+    CreateElementJSNoInline[TextComponent.type](TextComponent,
+                                                json().asInstanceOf[TextProps],
+                                                children = children.toJSArray)
+
 }

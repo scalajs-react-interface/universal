@@ -1,25 +1,31 @@
 package sri.universal.components
 
-import sri.core.{JSComponent, ReactElement}
-import sri.macros.{FunctionObjectMacro, OptDefault, OptionalParam}
-import sri.universal.{ReactEvent, XYValueLiteral}
+import sri.core.{JSComponent, ReactElement, _}
+import sri.macros.{
+  FunctionObjectMacro,
+  exclude,
+  OptDefault => NoValue,
+  OptionalParam => OP
+}
+import sri.universal.{MergeJSObjects, ReactEvent, XYValueLiteral}
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.{JSImport, ScalaJSDefined}
-
+import scala.scalajs.js.Dynamic.{literal => json}
+import scala.scalajs.js.JSConverters.genTravConvertible2JSRichGenTrav
+import scala.scalajs.js.annotation.JSImport
+import scala.scalajs.js.|
 @js.native
 @JSImport("react-native", "ScrollView")
 object ScrollViewComponent extends JSComponent[ScrollViewProps] {
   def scrollTo(position: ScrollPosition): Unit = js.native
   def scrollToEnd(options: ScrollToEndOptions = ???): Unit = js.native
+  def flashScrollIndicators(): Unit = js.native
 }
 
-@ScalaJSDefined
 trait ScrollToEndOptions extends js.Object {
   val animated: js.UndefOr[Boolean] = js.undefined
 }
 
-@ScalaJSDefined
 trait ScrollViewProps extends ViewProps {
   val zoomScale: js.UndefOr[Int] = js.undefined
   val contentContainerStyle: js.UndefOr[js.Any] = js.undefined
@@ -60,7 +66,6 @@ trait ScrollViewProps extends ViewProps {
   val overScrollMode: js.UndefOr[OverScrollMode] = js.undefined
 }
 
-@ScalaJSDefined
 trait OverScrollMode extends js.Object
 
 object OverScrollMode {
@@ -97,7 +102,6 @@ object ScrollViewIndicatorStyle {
   @inline def WHITE = "white".asInstanceOf[ScrollViewIndicatorStyle]
 }
 
-@ScalaJSDefined
 trait ScrollPosition extends js.Object {
   var x: js.UndefOr[Double] = js.undefined
   var y: js.UndefOr[Double] = js.undefined
@@ -132,10 +136,10 @@ trait ContentInset extends js.Object {
 
 object ContentInset {
   @inline
-  def apply(top: OptionalParam[Double] = OptDefault,
-            left: OptionalParam[Double] = OptDefault,
-            right: OptionalParam[Double] = OptDefault,
-            bottom: OptionalParam[Double] = OptDefault): ContentInset = {
+  def apply(top: OP[Double] = NoValue,
+            left: OP[Double] = NoValue,
+            right: OP[Double] = NoValue,
+            bottom: OP[Double] = NoValue): ContentInset = {
     val p = FunctionObjectMacro()
     p.asInstanceOf[ContentInset]
   }
@@ -155,4 +159,45 @@ trait Size2d extends js.Object {
   val width: Double = js.native
 
   val height: Double = js.native
+}
+
+object ScrollView {
+
+  @inline
+  def apply(style: OP[js.Any] = NoValue,
+            contentInset: OP[ContentInset] = NoValue,
+            @exclude extraProps: OP[ScrollViewProps] = NoValue,
+            @exclude key: String | Int = null,
+            pagingEnabled: OP[Boolean] = NoValue,
+            scrollEventThrottle: OP[Double] = NoValue,
+            onScroll: OP[ReactEvent[ScrollEvent] => _] = NoValue,
+            refreshControl: OP[ReactElement] = NoValue,
+            keyboardDismissMode: OP[ScrollViewKeyboardDismissMode] = NoValue,
+            keyboardShouldPersistTaps: OP[ScrollViewKeyboardPersistTaps] =
+              NoValue,
+            horizontal: OP[Boolean] = NoValue,
+            @exclude ref: js.Function1[ScrollViewComponent.type, Unit] = null)(
+      children: ReactNode*)
+    : ReactElement { type Instance = ScrollViewComponent.type } = {
+    val props = FunctionObjectMacro()
+    extraProps.foreach(v => {
+      MergeJSObjects(props, v)
+    })
+    CreateElementJSNoInline[ScrollViewComponent.type](
+      ScrollViewComponent,
+      props.asInstanceOf[ScrollViewProps],
+      key,
+      ref,
+      children.toJSArray)
+  }
+
+}
+
+object ScrollViewC {
+  @inline
+  def apply(children: ReactNode*) =
+    CreateElementJSNoInline[ScrollViewComponent.type](
+      ScrollViewComponent,
+      json().asInstanceOf[ScrollViewProps],
+      children = children.toJSArray)
 }

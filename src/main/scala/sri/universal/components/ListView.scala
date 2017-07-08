@@ -1,12 +1,18 @@
 package sri.universal.components
 
-import sri.core.{JSComponent, ReactElement}
+import sri.core.{JSComponent, ReactElement, _}
+import sri.macros.{
+  FunctionObjectMacro,
+  exclude,
+  OptDefault => NoValue,
+  OptionalParam => OP
+}
+import sri.universal.MergeJSObjects
 
 import scala.scalajs.js
 import scala.scalajs.js.Dynamic.{literal => json}
-import scala.scalajs.js.`|`
-import scala.scalajs.js.annotation.{JSImport, ScalaJSDefined}
-
+import scala.scalajs.js.annotation.JSImport
+import scala.scalajs.js.|
 @js.native
 @JSImport("react-native", "ListView")
 object ListViewComponent extends JSComponent[ListViewProps[_, _]] {
@@ -15,7 +21,6 @@ object ListViewComponent extends JSComponent[ListViewProps[_, _]] {
   def scrollToEnd(options: ScrollToEndOptions = ???): Unit = js.native
 }
 
-@ScalaJSDefined
 trait ListViewProps[R, H] extends ScrollViewProps {
   val scrollRenderAheadDistance: js.UndefOr[Int] = js.undefined
   val renderFooter: js.UndefOr[js.Function0[ReactElement]] =
@@ -53,4 +58,41 @@ trait VisibleRows extends js.Object {
 @js.native
 trait VisibleSection extends js.Object {
   val rowID: Boolean = js.native
+}
+
+object ListView {
+
+  @inline
+  def apply[R, H](
+      renderSectionHeader: OP[(H, String) => ReactElement] = NoValue,
+      @exclude extraProps: OP[ListViewProps[R, H]] = NoValue,
+      renderFooter: OP[() => ReactElement] = NoValue,
+      renderSeparator: OP[(String, String, Boolean) => ReactElement] = NoValue,
+      style: OP[js.Any] = NoValue,
+      pageSize: OP[Int] = NoValue,
+      initialListSize: OP[Int] = NoValue,
+      scrollRenderAheadDistance: OP[Double] = NoValue,
+      renderRow: OP[
+        (R,
+         String | Int,
+         String | Int,
+         js.Function2[String | Int, String | Int, _]) => ReactElement] =
+        NoValue,
+      dataSource: OP[ListViewDataSource[R, H]] = NoValue,
+      @exclude key: String | Int = null,
+      @exclude ref: js.Function1[ListViewComponent.type, Unit] = null)
+    : ReactElement { type Instance = ListViewComponent.type } = {
+    val props = FunctionObjectMacro()
+    extraProps.foreach(v => {
+      MergeJSObjects(props, v)
+    })
+
+    CreateElementJSNoInline[ListViewComponent.type](
+      ListViewComponent,
+      props.asInstanceOf[ListViewProps[R, H]],
+      key = key,
+      ref = ref)
+      .asInstanceOf[ReactElement { type Instance = ListViewComponent.type }]
+  }
+
 }

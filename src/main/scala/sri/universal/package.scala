@@ -1,9 +1,13 @@
 package sri
 
-import sri.core.{ReactElement, ReactNode}
-import sri.macros.{OptDefault, OptSpecified, OptionalParam}
+import sri.core.{ReactElement, ReactElementNode, ReactNode}
 import sri.universal.apis.Dimensions
-import sri.universal.components.{ListViewDataSource, ListViewDataSourceInput}
+import sri.universal.components.{
+  ListViewDataSource,
+  ListViewDataSourceInput,
+  View,
+  ViewC
+}
 
 import scala.collection.GenTraversableOnce
 import scala.scalajs.js
@@ -24,17 +28,25 @@ package object universal {
     def isDefinedAndNotNull: Boolean = value.isDefined && value != null
   }
 
-  implicit def genTravarsableToJSArrayReactElement[I <: js.Object](
+  implicit def genTravarsableToJSArrayReactNode[I <: js.Object](
       elm: GenTraversableOnce[ReactElement { type Instance = I }]): ReactNode =
     elm.toJSArray.asInstanceOf[ReactNode]
 
-  implicit def jSArrayReactElementToNode[I <: js.Object](
-      elm: js.Array[ReactElement { type Instance = I }]): ReactNode =
-    elm.asInstanceOf[ReactNode]
+  implicit def jsArrayReactElementToReactNode[T](
+      in: js.Array[ReactElement { type Instance = T }]): ReactNode =
+    in.asInstanceOf[ReactNode]
 
-  implicit def undefOrToOptionalParam[A](in: js.UndefOr[A]): OptionalParam[A] = {
-    in.map(OptSpecified(_)).getOrElse(OptDefault)
-  }
+  implicit def childrenTypeToReactElementNode(
+      in: ReactNode): ReactElementNode = in.asInstanceOf[ReactElementNode]
+
+  implicit def genTravarsableToJSArrayReactElementNode[I <: js.Object](
+      elm: GenTraversableOnce[ReactElement { type Instance = I }])
+    : ReactElementNode =
+    elm.toJSArray.asInstanceOf[ReactElementNode]
+
+  implicit def reactElementNodeArrayToReactNodeArray(
+      elm: js.Array[ReactElementNode]): js.Array[ReactNode] =
+    elm.asInstanceOf[js.Array[ReactNode]]
 
   def createListViewDataSource[R, H](
       rowHasChanged: js.Function2[R, R, Boolean],

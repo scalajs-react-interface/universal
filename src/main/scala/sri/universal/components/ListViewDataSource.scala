@@ -1,15 +1,21 @@
 package sri.universal.components
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.{JSImport, JSName, ScalaJSDefined}
+import scala.scalajs.js.annotation.{JSImport, JSName}
 import scala.scalajs.js.{UndefOr, `|`, Array => JArray}
 
-@ScalaJSDefined
 trait ListViewDataSourceInput[R, H] extends js.Object {
-  @JSName("rowHasChanged") var rowHasChangedF: js.UndefOr[js.Function2[R, R, Boolean]] = js.undefined
-  @JSName("sectionHeaderHasChanged") var sectionHeaderHasChangedF: js.UndefOr[js.Function2[H, H, Boolean]] = js.undefined
-  @JSName("getRowData") var getRowDataF: js.UndefOr[js.Function3[_, String | Int, String | Int, _]] = js.undefined
-  @JSName("getSectionHeaderData") var getSectionHeaderDataF: js.UndefOr[js.Function2[_, String | Int, _]] = js.undefined
+  @JSName("rowHasChanged")
+  var rowHasChangedF: js.UndefOr[js.Function2[R, R, Boolean]] = js.undefined
+  @JSName("sectionHeaderHasChanged")
+  var sectionHeaderHasChangedF: js.UndefOr[js.Function2[H, H, Boolean]] =
+    js.undefined
+  @JSName("getRowData")
+  var getRowDataF: js.UndefOr[js.Function3[_, String | Int, String | Int, _]] =
+    js.undefined
+  @JSName("getSectionHeaderData")
+  var getSectionHeaderDataF: js.UndefOr[js.Function2[_, String | Int, _]] =
+    js.undefined
 }
 
 @js.native
@@ -18,12 +24,22 @@ class ListViewDataSource[R, H] extends js.Object {
 
   def this(params: ListViewDataSourceInput[R, H]) = this()
 
-  def cloneWithRows(dataBlob: JArray[R], rowIdentities: JArray[String] = ???): ListViewDataSource[R, H] = js.native
+  def cloneWithRows(
+      dataBlob: JArray[R],
+      rowIdentities: JArray[String] = ???): ListViewDataSource[R, H] =
+    js.native
 
   @JSName("cloneWithRows")
-  def cloneWithRowsWithObject(dataBlob: js.Dictionary[Any], rowIdentities: JArray[String] = ???): ListViewDataSource[R, _] = js.native
+  def cloneWithRowsWithObject(
+      dataBlob: js.Dictionary[Any],
+      rowIdentities: JArray[String] = ???): ListViewDataSource[R, _] =
+    js.native
 
-  def cloneWithRowsAndSections(dataBlob: Any, sectionIdentities: JArray[String] = ???, rowIdentities: JArray[JArray[String]] = ???): ListViewDataSource[R, H] = js.native
+  def cloneWithRowsAndSections(
+      dataBlob: Any,
+      sectionIdentities: JArray[String] = ???,
+      rowIdentities: JArray[JArray[String]] = ???): ListViewDataSource[R, H] =
+    js.native
 
   def getRowCount(): Int = js.native
 

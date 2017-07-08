@@ -13,8 +13,6 @@ trait TextInputEvent extends js.Object {
 
   val text: String = js.native
 
-  val contentSize: TextInputContentSize = js.native
-
   val contentOffset: TextContentOffset = js.native
 }
 
@@ -35,18 +33,11 @@ trait TextContentOffset extends js.Object {
 }
 
 @js.native
-trait ImageEvent extends js.Object {
-
-}
+trait ImageEvent extends js.Object {}
 
 @js.native
 trait WebViewEvent extends js.Object {
   val data: String = js.native
 }
-
-
 @js.native
-trait SyntheticEvent extends js.Object {
-
-}
-
+trait SyntheticEvent extends js.Object {}

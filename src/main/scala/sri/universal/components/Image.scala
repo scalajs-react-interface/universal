@@ -1,13 +1,21 @@
 package sri.universal.components
 
-import sri.core.JSComponent
-import sri.macros.{FunctionObjectMacro, OptDefault, OptionalParam}
+import sri.core.{JSComponent, _}
+import sri.macros.{
+  FunctionObjectMacro,
+  exclude,
+  rename,
+  OptDefault => NoValue,
+  OptionalParam => OP
+}
 import sri.universal.apis.LayoutEvent
-import sri.universal.{ImageEvent, ReactEvent}
+import sri.universal.{ImageEvent, MergeJSObjects, ReactEvent}
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.{JSImport, JSName, ScalaJSDefined}
-
+import scala.scalajs.js.Dynamic.{literal => json}
+import scala.scalajs.js.JSConverters.genTravConvertible2JSRichGenTrav
+import scala.scalajs.js.annotation.{JSImport, JSName}
+import scala.scalajs.js.|
 @js.native
 @JSImport("react-native", "Image")
 object ImageComponent extends JSComponent[ImageProps] {
@@ -19,7 +27,6 @@ object ImageComponent extends JSComponent[ImageProps] {
   def prefetch(url: String): js.Promise[js.Dynamic] = js.native
 }
 
-@ScalaJSDefined
 trait ImageProps extends js.Object {
   val source: js.UndefOr[ImageSource] = js.undefined
   @JSName("source") val sourceDynamic: js.UndefOr[js.Any] = js.undefined
@@ -47,7 +54,6 @@ trait ImageProps extends js.Object {
   val accessible: js.UndefOr[Boolean] = js.undefined
 }
 
-@ScalaJSDefined
 trait ImageSource extends js.Object {
   var uri: String
   var isStatic: js.UndefOr[Boolean] = js.undefined
@@ -58,9 +64,8 @@ trait ImageSource extends js.Object {
 object ImageSource {
   @inline
   def apply(uri: String,
-            scale: OptionalParam[Double] = OptDefault,
-            headers: OptionalParam[js.Dictionary[String]] = OptDefault)
-    : ImageSource = {
+            scale: OP[Double] = NoValue,
+            headers: OP[js.Dictionary[String]] = NoValue): ImageSource = {
     val p = FunctionObjectMacro()
     p.asInstanceOf[ImageSource]
   }
@@ -75,4 +80,65 @@ object ImageResizeMode {
   val STRETCH = "stretch".asInstanceOf[ImageResizeMode]
   val REPEAT = "repeat".asInstanceOf[ImageResizeMode]
   val CENTER = "center".asInstanceOf[ImageResizeMode]
+}
+
+object Image {
+
+  @inline
+  def apply(style: OP[js.Any] = NoValue,
+            onLayout: OP[LayoutEvent => _] = NoValue,
+            @exclude extraProps: OP[ImageProps] = NoValue,
+            source: OP[ImageSource] = NoValue,
+            resizeMode: OP[ImageResizeMode] = NoValue,
+            @rename("source") sourceDynamic: OP[js.Any] = NoValue,
+            @exclude key: String | Int = null,
+            @exclude ref: js.Function1[ImageComponent.type, Unit] = null)
+    : ReactElement { type Instance = ImageComponent.type } = {
+    val props = FunctionObjectMacro()
+    extraProps.foreach(v => {
+      MergeJSObjects(props, v)
+    })
+    CreateElementJS[ImageComponent.type](ImageComponent,
+                                         props.asInstanceOf[ImageProps],
+                                         key,
+                                         ref)
+  }
+
+}
+@js.native
+@JSImport("react-native", "ImageBackground")
+object ImageBackgroundComponent extends JSComponent[ImageProps] {
+
+  def getSize(uri: String,
+              success: (Double, Double) => Unit,
+              failure: js.Dynamic => Unit): Unit = js.native
+
+  def prefetch(url: String): js.Promise[js.Dynamic] = js.native
+}
+
+object ImageBackground {
+
+  @inline
+  def apply(style: OP[js.Any] = NoValue,
+            onLayout: OP[LayoutEvent => _] = NoValue,
+            @exclude extraProps: OP[ImageProps] = NoValue,
+            source: OP[ImageSource] = NoValue,
+            resizeMode: OP[ImageResizeMode] = NoValue,
+            @rename("source") sourceDynamic: OP[js.Any] = NoValue,
+            @exclude key: String | Int = null,
+            @exclude ref: js.Function1[ImageBackgroundComponent.type, Unit] =
+              null)(children: ReactNode*)
+    : ReactElement { type Instance = ImageBackgroundComponent.type } = {
+    val props = FunctionObjectMacro()
+    extraProps.foreach(v => {
+      MergeJSObjects(props, v)
+    })
+    CreateElementJS[ImageBackgroundComponent.type](
+      ImageBackgroundComponent,
+      props.asInstanceOf[ImageProps],
+      key,
+      ref,
+      children = children.toJSArray)
+  }
+
 }

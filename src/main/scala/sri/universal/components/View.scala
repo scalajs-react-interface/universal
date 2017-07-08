@@ -1,11 +1,20 @@
 package sri.universal.components
 
-import sri.core.{ComponentConstructor, JSComponent, ReactClass}
+import sri.core.{JSComponent, _}
+import sri.macros.{
+  FunctionObjectMacro,
+  exclude,
+  OptDefault => NoValue,
+  OptionalParam => OP
+}
+import sri.universal.MergeJSObjects
 import sri.universal.apis.LayoutEvent
 
 import scala.scalajs.js
-import scala.scalajs.js.Dynamic.{global => g}
-import scala.scalajs.js.annotation.{JSImport, ScalaJSDefined}
+import scala.scalajs.js.Dynamic.{global => g, literal => json}
+import scala.scalajs.js.JSConverters.genTravConvertible2JSRichGenTrav
+import scala.scalajs.js.annotation.JSImport
+import scala.scalajs.js.|
 
 @js.native
 @JSImport("react-native", "View")
@@ -13,7 +22,38 @@ object ViewComponent extends JSComponent[ViewProps] {
 //  override type PropsType = ViewProps
 }
 
-@ScalaJSDefined
+object View {
+  @inline
+  def apply(style: OP[js.Any] = NoValue,
+            onLayout: OP[LayoutEvent => _] = NoValue,
+            @exclude extraProps: OP[ViewProps] = NoValue,
+            @exclude key: String | Int = null,
+            @exclude ref: js.Function1[ViewComponent.type, Unit] = null)(
+      children: ReactNode*)
+    : ReactElement { type Instance = ViewComponent.type } = {
+    val props = FunctionObjectMacro()
+    extraProps.foreach(v => {
+      MergeJSObjects(props, v)
+    })
+    CreateElementJS[ViewComponent.type](ViewComponent,
+                                        props.asInstanceOf[ViewProps],
+                                        key,
+                                        ref,
+                                        children.toJSArray)
+  }
+
+}
+
+object ViewC {
+
+  @inline
+  def apply(children: ReactNode*) =
+    CreateElementJS[ViewComponent.type](ViewComponent,
+                                        json().asInstanceOf[ViewProps],
+                                        children = children.toJSArray)
+
+}
+
 trait ViewProps extends js.Object {
   val onResponderReject: js.UndefOr[js.Function] = js.undefined
   val renderToHardwareTextureAndroid: js.UndefOr[Boolean] = js.undefined
@@ -47,7 +87,6 @@ trait ViewProps extends js.Object {
   val accessible: js.UndefOr[Boolean] = js.undefined
 }
 
-@ScalaJSDefined
 trait AccessibilityTraits extends js.Object
 
 object AccessibilityTraits {
@@ -101,7 +140,6 @@ object ActivityIndicatorSize {
   @inline def LARGE = "large".asInstanceOf[ActivityIndicatorSize]
 }
 
-@ScalaJSDefined
 trait EdgeInsets extends js.Object {
   val top: js.UndefOr[Double] = js.undefined
   val left: js.UndefOr[Double] = js.undefined

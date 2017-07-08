@@ -1,16 +1,23 @@
 package sri.universal.components
 
-import sri.core.JSComponent
+import sri.core.{JSComponent, _}
+import sri.macros.{
+  FunctionObjectMacro,
+  exclude,
+  OptDefault => NoValue,
+  OptionalParam => OP
+}
+import sri.universal.MergeJSObjects
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.{JSImport, ScalaJSDefined}
-import scala.scalajs.js.{UndefOr => U}
+import scala.scalajs.js.Dynamic.{literal => json}
+import scala.scalajs.js.annotation.JSImport
+import scala.scalajs.js.{|, UndefOr => U}
 
 @js.native
 @JSImport("react-native", "Switch")
 object SwitchComponent extends JSComponent[SwitchProps]
 
-@ScalaJSDefined
 trait SwitchProps extends ViewProps {
   val value: js.UndefOr[Boolean] = js.undefined
   val disabled: js.UndefOr[Boolean] = js.undefined
@@ -20,5 +27,28 @@ trait SwitchProps extends ViewProps {
   val thumbTintColor: js.UndefOr[String] = js.undefined
 }
 
-@js.native
-trait SwitchM extends js.Object
+object Switch {
+
+  @inline
+  def apply(style: OP[js.Any] = NoValue,
+            value: OP[Boolean] = NoValue,
+            disabled: OP[Boolean] = NoValue,
+            tintColor: OP[String] = NoValue,
+            onTintColor: OP[String] = NoValue,
+            onValueChange: OP[Boolean => _] = NoValue,
+            @exclude extraProps: OP[SwitchProps] = NoValue,
+            @exclude key: String | Int = null,
+            @exclude ref: js.Function1[SwitchComponent.type, Unit] = null)
+    : ReactElement { type Instance = SwitchComponent.type } = {
+    val props = FunctionObjectMacro()
+    extraProps.foreach(v => {
+      MergeJSObjects(props, v)
+    })
+    CreateElementJSNoInline[SwitchComponent.type](
+      SwitchComponent,
+      props.asInstanceOf[SwitchProps],
+      key,
+      ref)
+  }
+
+}

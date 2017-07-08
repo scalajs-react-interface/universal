@@ -1,7 +1,7 @@
 package sri.universal.apis
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.{JSImport, ScalaJSDefined}
+import scala.scalajs.js.annotation.JSImport
 
 @js.native
 trait Dimensions extends js.Object {

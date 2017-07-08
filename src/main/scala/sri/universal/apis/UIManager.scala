@@ -1,8 +1,7 @@
 package sri.universal.apis
 
 import scala.scalajs.js
-import scala.scalajs.js.Promise
-import scala.scalajs.js.annotation.{JSImport, ScalaJSDefined}
+import scala.scalajs.js.annotation.JSImport
 
 @js.native
 trait UIManager extends js.Object {}

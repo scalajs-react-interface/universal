@@ -5,20 +5,12 @@ import sri.universal.XYValueLiteral
 import sri.universal.components._
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.{JSImport, ScalaJSDefined}
+import scala.scalajs.js.annotation.JSImport
 import scala.scalajs.js.{undefined, |, UndefOr => U}
-
-@js.native
-@JSImport("react-native", "Animated.View")
-object AnimatedViewComponent extends JSComponent[ViewProps]
 
 @js.native
 @JSImport("react-native", "Animated.Text")
 object AnimatedTextComponent extends JSComponent[TextProps]
-
-@js.native
-@JSImport("react-native", "Animated.Image")
-object AnimatedImageComponent extends JSComponent[ImageProps]
 
 @js.native
 trait Animated extends js.Object {
@@ -74,12 +66,10 @@ trait Animated extends js.Object {
 @JSImport("react-native", "Animated")
 object Animated extends Animated
 
-@ScalaJSDefined
 trait AnimatedParallelConfig extends js.Object {
   var stopTogether: U[Boolean] = undefined
 }
 
-@ScalaJSDefined
 trait AnimatedEventConfig extends js.Object {
   var listener: U[js.Function] = undefined
   var useNativeDriver: U[Boolean] = undefined
@@ -109,14 +99,12 @@ trait CompositeAnimation extends js.Object {
   def start(callback: AnimatedEndResult => _ = ???): Unit = js.native
 }
 
-@ScalaJSDefined
 trait AnimatedConfig extends js.Object {
   var isInteraction: U[Boolean] = undefined
   var useNativeDriver: U[Boolean] = undefined
   var onComplete: U[js.Function1[AnimatedEndResult, _]] = undefined
 }
 
-@ScalaJSDefined
 trait DecayAnimationConfig extends AnimatedConfig {
 
   var velocity: U[Double | XYValueLiteral] = undefined
@@ -124,7 +112,6 @@ trait DecayAnimationConfig extends AnimatedConfig {
   var deceleration: U[Double] = undefined
 }
 
-@ScalaJSDefined
 trait TimingAnimationConfig extends AnimatedConfig {
   var toValue: U[Double | AnimatedValue | XYValueLiteral | AnimatedValueXY] =
     undefined
@@ -133,7 +120,6 @@ trait TimingAnimationConfig extends AnimatedConfig {
   var delay: U[Double] = undefined
 }
 
-@ScalaJSDefined
 trait SpringAnimationConfig extends AnimatedConfig {
   var toValue: U[Double | AnimatedValue | XYValueLiteral | AnimatedValueXY] =
     undefined
@@ -182,7 +168,6 @@ class AnimatedValue(value: Double) extends js.Object {
 
 }
 
-@ScalaJSDefined
 trait AnimatedValueXYValue extends js.Object {
   var x: Double | AnimatedValue
   var y: Double | AnimatedValue
@@ -224,7 +209,6 @@ trait AnimatedInterpolation extends js.Object {
 
 }
 
-@ScalaJSDefined
 trait AnimatedInterpolationConfig extends js.Object {
   var inputRange: js.Array[Double]
   var outputRange: js.Array[Double] | js.Array[String]

@@ -2,7 +2,7 @@ package sri.universal.apis
 
 import scala.scalajs.js
 import scala.scalajs.js.Promise
-import scala.scalajs.js.annotation.{JSImport, ScalaJSDefined}
+import scala.scalajs.js.annotation.JSImport
 
 @js.native
 @JSImport("react-native", "takeSnapshot")
@@ -11,7 +11,6 @@ object TakeSnapshot extends js.Object {
             options: SnapShotOptions = ???): Promise[js.Any] = js.native
 }
 
-@ScalaJSDefined
 trait SnapShotOptions extends js.Object {
 
   var width: js.UndefOr[Double] = js.undefined

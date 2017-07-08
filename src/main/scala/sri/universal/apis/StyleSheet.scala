@@ -4,9 +4,7 @@ import scala.scalajs.js
 import scala.scalajs.js.annotation.JSImport
 
 @js.native
-@JSImport(
-  "react-native/Libraries/Renderer/src/renderers/native/ReactNativePropRegistry",
-  JSImport.Namespace)
+@JSImport("ReactNativePropRegistry", JSImport.Namespace)
 object ReactNativePropRegistry extends js.Object {
 
   def register(obj: js.Object): Int = js.native
