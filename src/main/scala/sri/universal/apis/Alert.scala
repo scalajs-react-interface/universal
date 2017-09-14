@@ -3,6 +3,7 @@ package sri.universal.apis
 import scala.scalajs.js
 import scala.scalajs.js.Dynamic.{literal => json}
 import scala.scalajs.js.annotation.JSImport
+import sri.macros.{FunctionObjectMacro, OptDefault => NoValue, OptionalParam => OP}
 
 @js.native
 trait Alert extends js.Object {
