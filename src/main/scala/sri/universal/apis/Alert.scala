@@ -3,6 +3,7 @@ package sri.universal.apis
 import scala.scalajs.js
 import scala.scalajs.js.Dynamic.{literal => json}
 import scala.scalajs.js.annotation.JSImport
+import sri.macros.{FunctionObjectMacro, OptDefault => NoValue, OptionalParam => OP}
 
 @js.native
 trait Alert extends js.Object {
@@ -18,9 +19,19 @@ trait Alert extends js.Object {
 object Alert extends Alert
 
 trait AlertButton extends js.Object {
-  var text: js.UndefOr[String] = js.undefined
-  var onPress: js.UndefOr[js.Function] = js.undefined
-  var style: js.UndefOr[AlertButtonStyle] = js.undefined
+  val text: js.UndefOr[String] = js.undefined
+  val onPress: js.UndefOr[js.Function] = js.undefined
+  val style: js.UndefOr[AlertButtonStyle] = js.undefined
+}
+
+object AlertButton {
+  @inline
+  def apply(text: OP[String] = NoValue,
+            onPress: OP[() => _] = NoValue,
+            style: OP[AlertButtonStyle] = NoValue): AlertButton = {
+    val p = FunctionObjectMacro()
+    p.asInstanceOf[AlertButton]
+  }
 }
 
 trait AlertOptions extends js.Object {
