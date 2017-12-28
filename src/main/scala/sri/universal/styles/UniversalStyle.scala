@@ -1,17 +1,8 @@
 package sri.universal.styles
 
-import sri.macros.exclude
-import sri.universal.apis.ReactNativePropRegistry
-//import sri.universal.apis.{AnimatedValue, ReactNativePropRegistry}
 
 import scala.scalajs.js
-import scala.scalajs.js.|
-//import scala.scalajs.js.{UndefOr => U, undefined => NoValue}
-import sri.macros.{
-  FunctionObjectMacro,
-  OptDefault => NoValue,
-  OptionalParam => U
-}
+
 import scala.language.experimental.macros
 
 trait InlineStyleSheetUniversal {

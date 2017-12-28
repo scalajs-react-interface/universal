@@ -1,12 +1,8 @@
 package sri.universal.components
 
 import sri.core.{JSComponent, ReactClass, ReactElement, _}
-import sri.macros.{
-  FunctionObjectMacro,
-  exclude,
-  OptDefault => NoValue,
-  OptionalParam => OP
-}
+import scalajsplus.macros.{FunctionObjectMacro,exclude,rename}
+import scalajsplus.{ OptDefault => NoValue, OptionalParam => OP}
 import sri.universal.apis.LayoutEvent
 import sri.universal.{MergeJSObjects, ReactEvent}
 
@@ -259,7 +255,7 @@ object FlatList {
       @exclude key: String | Int = null,
       @exclude ref: js.Function1[FlatListComponent.type, Unit] = null)
     : ReactElement { type Instance = FlatListComponent.type } = {
-    import sri.universal.DangerousUnionToJSAnyImplicit._
+    import scalajsplus.DangerousUnionToJSAnyImplicit._
     val props = FunctionObjectMacro()
     extraProps.foreach(v => {
       MergeJSObjects(props, v)

@@ -1,12 +1,8 @@
 package sri.universal.components
 
 import sri.core.{JSComponent, _}
-import sri.macros.{
-  FunctionObjectMacro,
-  exclude,
-  OptDefault => NoValue,
-  OptionalParam => OP
-}
+import scalajsplus.macros.{FunctionObjectMacro,exclude,rename}
+import scalajsplus.{ OptDefault => NoValue, OptionalParam => OP}
 import sri.universal.apis.LayoutEvent
 import sri.universal.{MergeJSObjects, ReactEvent, SyntheticEvent}
 

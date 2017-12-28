@@ -1,12 +1,12 @@
 package sri.universal.styles
 
-import scala.reflect.macros.whitebox
+import scala.reflect.macros.blackbox
 import scala.scalajs.js
 import scala.util
 
 private[sri] object InlineStylesMacro {
 
-  def styleMacroImpl(c: whitebox.Context)(props: c.Tree*): c.Tree = {
+  def styleMacroImpl(c: blackbox.Context)(props: c.Tree*): c.Tree = {
     import c.universe._
 
     val obj = TermName(c.freshName())
@@ -33,13 +33,13 @@ private[sri] object InlineStylesMacro {
     })
     q"""
          import scalajs.js
-         import sri.universal.DangerousUnionToJSAnyImplicit._
+         import scalajsplus.DangerousUnionToJSAnyImplicit._
          val $obj = js.Dynamic.literal(..$keyValues)
          $obj
       """
   }
 
-  def styleRegisterMacroImpl(c: whitebox.Context)(props: c.Tree*): c.Tree = {
+  def styleRegisterMacroImpl(c: blackbox.Context)(props: c.Tree*): c.Tree = {
     import c.universe._
     val obj = styleMacroImpl(c)(props: _*)
     q"""

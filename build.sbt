@@ -1,16 +1,15 @@
 name := "universal"
 
-//version := "2017.7.0-SNAPSHOT"
+//version := "2017.12.0-SNAPSHOT"
 
 enablePlugins(ScalaJSPlugin)
 
-val scala211 = "2.11.11"
 
-val scala212 = "2.12.2"
+val scala212 = "2.12.4"
 
-scalaVersion := scala211
+scalaVersion := scala212
 
-crossScalaVersions := Seq(scala211, scala212)
+crossScalaVersions := Seq(scala212)
 
 scalacOptions ++= Seq(
   "-feature",
@@ -22,10 +21,10 @@ scalacOptions ++= Seq(
 
 //Dependencies
 libraryDependencies ++= Seq(
-  "scalajs-react-interface" %%% "core" % "2017.7.9-RC" % Provided,
+  "scalajs-react-interface" %%% "core" % "2017.12.28-RC" % Provided,
   "org.scala-lang" % "scala-reflect" % scalaVersion.value % Provided,
-  "scalajs-react-interface" %%% "macros" % "2017.7.9-RC",
-  "org.scala-js" %%% "scalajs-dom" % "0.9.3"
+  "scalajs-plus" %%% "core" % "2017.12.27",
+  "org.scala-js" %%% "scalajs-dom" % "0.9.4"
 )
 
 //bintray
@@ -77,8 +76,9 @@ def runJest() = {
 
 resolvers += Resolver.bintrayRepo("scalajs-react-interface", "maven")
 resolvers += Resolver.bintrayRepo("scalajs-jest", "maven")
+resolvers += Resolver.bintrayRepo("scalajs-plus", "maven")
 
 libraryDependencies ++= Seq(
-  "org.scala-js" %%% "scalajs-dom" % "0.9.3" % Test,
-  "scalajs-jest" %%% "core" % "2017.7.9-beta" % Test
+  "org.scala-js" %%% "scalajs-dom" % "0.9.4" % Test,
+  "scalajs-jest" %%% "core" % "2017.12.27-RC" % Test
 )
