@@ -54,6 +54,7 @@ trait ViewProps extends js.Object {
   val onStartShouldSetResponder: js.UndefOr[js.Function] = js.undefined
   val onMoveShouldSetResponder: js.UndefOr[js.Function] = js.undefined
   val onStartShouldSetResponderCapture: js.UndefOr[js.Function] = js.undefined
+  val onMoveShouldSetResponderCapture: js.UndefOr[js.Function] = js.undefined
   val onResponderGrant: js.UndefOr[js.Function] = js.undefined
   val onResponderReject: js.UndefOr[js.Function] = js.undefined
   val onResponderMove: js.UndefOr[js.Function] = js.undefined
