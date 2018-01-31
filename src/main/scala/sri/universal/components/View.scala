@@ -50,6 +50,26 @@ object ViewC {
 
 }
 
+object GestureEvent {
+  @js.native
+  trait NativeEvent extends js.Any {
+    def changedTouches: js.Array[NativeEvent]  = js.native
+    def identifier: Int = js.native
+    def locationX: Double = js.native
+    def locationY: Double = js.native
+    def pageX: Double = js.native
+    def pageY: Double = js.native
+    def target: Int = js.native
+    def timestamp: Double = js.native
+    def touches: js.Array[NativeEvent] = js.native
+  }
+}
+
+@js.native
+trait GestureEvent extends js.Any {
+    def nativeEvent: GestureEvent.NativeEvent = js.native
+}
+
 trait ViewProps extends js.Object {
   val onResponderReject: js.UndefOr[js.Function] = js.undefined
   val renderToHardwareTextureAndroid: js.UndefOr[Boolean] = js.undefined
