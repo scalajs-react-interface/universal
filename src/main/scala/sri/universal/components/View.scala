@@ -50,20 +50,45 @@ object ViewC {
 
 }
 
+object GestureEvent {
+  @js.native
+  trait NativeEvent extends js.Any {
+    def changedTouches: js.Array[NativeEvent]  = js.native
+    def identifier: Int = js.native
+    def locationX: Double = js.native
+    def locationY: Double = js.native
+    def pageX: Double = js.native
+    def pageY: Double = js.native
+    def target: Int = js.native
+    def timestamp: Double = js.native
+    def touches: js.Array[NativeEvent] = js.native
+  }
+}
+
+@js.native
+trait GestureEvent extends js.Any {
+    def nativeEvent: GestureEvent.NativeEvent = js.native
+}
+
 trait ViewProps extends js.Object {
-  val onResponderReject: js.UndefOr[js.Function] = js.undefined
-  val renderToHardwareTextureAndroid: js.UndefOr[Boolean] = js.undefined
   val onStartShouldSetResponder: js.UndefOr[js.Function] = js.undefined
+  val onMoveShouldSetResponder: js.UndefOr[js.Function] = js.undefined
+  val onStartShouldSetResponderCapture: js.UndefOr[js.Function] = js.undefined
+  val onMoveShouldSetResponderCapture: js.UndefOr[js.Function] = js.undefined
+  val onResponderGrant: js.UndefOr[js.Function] = js.undefined
+  val onResponderReject: js.UndefOr[js.Function] = js.undefined
+  val onResponderMove: js.UndefOr[js.Function] = js.undefined
+  val onResponderTerminationRequest: js.UndefOr[js.Function] = js.undefined
+  val onResponderTerminate: js.UndefOr[js.Function] = js.undefined
+  val renderToHardwareTextureAndroid: js.UndefOr[Boolean] = js.undefined
   val onResponderRelease: js.UndefOr[js.Function] = js.undefined
   val onMagicTap: js.UndefOr[js.Function] = js.undefined
-  val onResponderMove: js.UndefOr[js.Function] = js.undefined
   val collapsable: js.UndefOr[Boolean] = js.undefined
   val shouldRasterizeIOS: js.UndefOr[Boolean] = js.undefined
   val onLayout: js.UndefOr[js.Function1[LayoutEvent, _]] = js.undefined
   val onAccessibilityTap: js.UndefOr[js.Function0[_]] = js.undefined
   val accessibilityLabel: js.UndefOr[String] = js.undefined
   val AccessibilityComponentType: js.UndefOr[js.Any] = js.undefined
-  val onMoveShouldSetResponder: js.UndefOr[js.Function] = js.undefined
   val removeClippedSubviews: js.UndefOr[Boolean] = js.undefined
   val style: js.UndefOr[js.Any] = js.undefined
   val accessibilityTraits: js.UndefOr[js.Array[AccessibilityTraits]] =
@@ -72,12 +97,8 @@ trait ViewProps extends js.Object {
   val collapsible: js.UndefOr[Boolean] = js.undefined
   val accessibilityViewIsModal: js.UndefOr[Boolean] = js.undefined
   val needsOffscreenAlphaCompositing: js.UndefOr[Boolean] = js.undefined
-  val onResponderTerminationRequest: js.UndefOr[js.Function] = js.undefined
   val testID: js.UndefOr[String] = js.undefined
   val pointerEvents: js.UndefOr[PointerEvents] = js.undefined
-  val onResponderTerminate: js.UndefOr[js.Function] = js.undefined
-  val onStartShouldSetResponderCapture: js.UndefOr[js.Function] = js.undefined
-  val onResponderGrant: js.UndefOr[js.Function] = js.undefined
   val importantForAccessibility: js.UndefOr[ImportantForAccessibility] =
     js.undefined
   val accessible: js.UndefOr[Boolean] = js.undefined
