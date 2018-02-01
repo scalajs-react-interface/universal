@@ -21,9 +21,9 @@ scalacOptions ++= Seq(
 
 //Dependencies
 libraryDependencies ++= Seq(
-  "scalajs-react-interface" %%% "core" % "2017.12.28-RC" % Provided,
+  "scalajs-react-interface" %%% "core" % "2018.2.2-RC" % Provided,
   "org.scala-lang" % "scala-reflect" % scalaVersion.value % Provided,
-  "scalajs-plus" %%% "core" % "2017.12.27",
+  "scalajs-plus" %%% "core" % "2018.2.2",
   "org.scala-js" %%% "scalajs-dom" % "0.9.4"
 )
 
@@ -80,5 +80,5 @@ resolvers += Resolver.bintrayRepo("scalajs-plus", "maven")
 
 libraryDependencies ++= Seq(
   "org.scala-js" %%% "scalajs-dom" % "0.9.4" % Test,
-  "scalajs-jest" %%% "core" % "2017.12.27-RC" % Test
+  "scalajs-jest" %%% "core" % "2018.2.2-RC" % Test
 )
