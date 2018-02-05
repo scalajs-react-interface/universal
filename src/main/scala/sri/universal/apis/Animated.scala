@@ -96,7 +96,7 @@ trait AnimatedEndResult extends js.Object {
 trait CompositeAnimation extends js.Object {
   def stop(): Unit = js.native
 
-  def start(callback: AnimatedEndResult => _ = ???): Unit = js.native
+  def start(callback: js.Function1[AnimatedEndResult, Any] = ???): Unit = js.native
 }
 
 trait AnimatedConfig extends js.Object {
@@ -148,18 +148,18 @@ class AnimatedValue(value: Double) extends js.Object {
 
   def extractOffset(): Unit = js.native
 
-  def addListener(callback: js.Dynamic => _): String = js.native
+  def addListener(callback: js.Function1[js.Dynamic, Any]): String = js.native
 
   def removeListener(id: String): Unit = js.native
 
   def removeAllListeners(): Unit = js.native
 
-  def stopAnimation(callback: js.Dynamic => _ = ???): Unit = js.native
+  def stopAnimation(callback: js.Function1[js.Dynamic, Any] = ???): Unit = js.native
 
   def interpolate(config: AnimatedInterpolationConfig): AnimatedInterpolation =
     js.native
 
-  def animate(animation: Animation, callback: js.Dynamic => _): Unit =
+  def animate(animation: Animation, callback: js.Function1[js.Dynamic, Any]): Unit =
     js.native
 
   def stopTracking(): Unit = js.native
@@ -185,9 +185,9 @@ class AnimatedValueXY(valueIn: AnimatedValueXYValue = ???) extends js.Object {
 
   def removeAllListeners(): Unit = js.native
 
-  def stopAnimation(callback: XYValueLiteral => _ = ???): Unit = js.native
+  def stopAnimation(callback: js.Function1[XYValueLiteral, Any] = ???): Unit = js.native
 
-  def addListener(callback: XYValueLiteral => _): String = js.native
+  def addListener(callback: js.Function1[XYValueLiteral, Any]): String = js.native
 
   def removeListener(id: String): Unit = js.native
 
