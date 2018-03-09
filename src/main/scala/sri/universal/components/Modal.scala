@@ -21,6 +21,7 @@ trait ModalProps extends js.Object {
   val animationType: js.UndefOr[ModalAnimationType] = js.undefined
   val onDismiss: js.UndefOr[js.Function0[_]] = js.undefined
   val transparent: js.UndefOr[Boolean] = js.undefined
+  val onRequestClose: js.UndefOr[js.Function0[_]] = js.undefined
 }
 
 @js.native
