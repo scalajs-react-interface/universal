@@ -15,7 +15,7 @@ trait InlineStyleSheetUniversal {
     * @return
     */
   def style(props: InlineStylePropUniversal.type*): js.Any =
-    macro InlineStylesMacro.styleRegisterMacroImpl
+    macro InlineStylesMacro.styleMacroImpl
 
   /**
     *  It creates object from props and returns it.
