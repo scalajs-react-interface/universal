@@ -67,6 +67,7 @@ trait TextInputProps extends ViewProps {
   val editable: js.UndefOr[Boolean] = js.undefined
   val blurOnSubmit: js.UndefOr[Boolean] = js.undefined
   val password: js.UndefOr[Boolean] = js.undefined
+  val secureTextEntry: js.UndefOr[Boolean] = js.undefined
 }
 
 /**
