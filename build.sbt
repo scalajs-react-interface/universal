@@ -1,6 +1,6 @@
 name := "universal"
 
-//version := "2018.04.18-SNAPSHOT"
+//version := "2018.05.28-SNAPSHOT"
 
 enablePlugins(ScalaJSPlugin)
 
