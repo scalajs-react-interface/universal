@@ -101,7 +101,7 @@ object Image {
 
 }
 @js.native
-@JSImport("react-native", "ImageBackground")
+@JSImport("react-native", "Image")
 object ImageBackgroundComponent extends JSComponent[ImageProps] {
 
   def getSize(uri: String,
