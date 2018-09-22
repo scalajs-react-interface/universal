@@ -21,9 +21,9 @@ scalacOptions ++= Seq(
 
 //Dependencies
 libraryDependencies ++= Seq(
-  "scalajs-react-interface" %%% "core" % "2018.9.2-RC" % Provided,
+  "scalajs-react-interface" %%% "core" % "2018.9.22-RC" % Provided,
   "org.scala-lang" % "scala-reflect" % scalaVersion.value % Provided,
-  "scalajs-plus" %%% "core" % "2018.9.2",
+  "scalajs-plus" %%% "core" % "2018.9.22",
   "org.scala-js" %%% "scalajs-dom" % "0.9.6"
 )
 
